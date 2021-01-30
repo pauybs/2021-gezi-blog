@@ -1,0 +1,77 @@
+﻿@using TezProje.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<KullaniciYazi>
+@{
+    ViewBag.Title = "Yazar";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<div class="container">
+
+    <div class="row ">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 my-4">
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">Yazar: <b>@ViewBag.yazar</b></li>
+                </ol>
+            </nav>
+            <!-- Blog Post -->
+
+
+            @foreach (var x in Model)
+            {
+                ViewBag.yazi = Html.Raw(x.YaziAciklama).ToString();
+                string yazi = ViewBag.yazi;
+                string metin = System.Text.RegularExpressions.Regex.Replace(x.YaziAciklama, @"<[^>]+>|&nbsp;", " ").Trim();
+
+                <div class="card mb-4 shadow">
+                    @*<img src="@x.BlogResim" alt="@x.ResimAltTag" class="img-fluid" />*@
+                    <div class="card-body">
+                        <h2 class="card-title">@x.YaziBaslik</h2>
+                        <p class="card-text">
+                            @Html.Raw(metin.Substring(0, 70) + " ...")
+
+                        </p>
+                        <a href="/deneme/DenemeDetay/@x.YaziID" class="btn btn-primary">Devamını Oku &rarr;</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <ul class="list-inline small text-uppercase mb-0 text-right">
+                            <li class="list-inline-item align-middle"><i class="fas fa-user"></i></li>
+                            <li class="list-inline-item mr-0 text-gray align-middle">Yazar - </li>
+                            <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#"> @x.Uye1.UyeKullaniciAdi</a></li>
+                            <li class="list-inline-item text-gray align-middle mr-0">|</li>
+                            <li class="list-inline-item text-gray align-middle">@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</li>
+                        </ul>
+                    </div>
+                </div>
+
+            }
+
+
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Yazar", new { sayfa = sayfa }),
+                new PagedListRenderOptions
+                {
+
+                    LiElementClasses = new List<string>
+
+                    {"page-link page-item"}
+
+                })
+        </div>
+
+
+        @Html.Action("SideBar", "Blog")
+
+
+    </div>
+    <!-- /.row -->
+
+</div>
+
+

@@ -1,0 +1,43 @@
+﻿@model List<TezProje.Models.Siniflar.Harita>
+
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+
+
+    <main class="main-content py-5">
+        <header class="text-center mb-5">
+            <h2>Mini Galeri</h2>
+        </header>
+        <div class="container photos">
+            <div class="row align-items-stretch">
+                @foreach (var x in Model)
+                {
+               
+
+                <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+                    <a href="@x.Frame" class="d-block photo-item" data-fancybox="gallery">
+                        <img src="@x.Frame" alt="Image" class="img-fluid" />
+                        <div class="photo-text-more">
+                            <span class="icon icon-search"></span>
+                        </div>
+                    </a>
+                </div>
+                }
+                
+
+            </div>
+        </div>
+    </main>
+
+</div>

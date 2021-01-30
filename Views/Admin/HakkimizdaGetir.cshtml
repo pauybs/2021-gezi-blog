@@ -1,0 +1,168 @@
+﻿@model TezProje.Models.Siniflar.Hakkimda
+@{
+    ViewBag.Title = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="my-2 ">Hakkımızda Güncelle</h2>
+<hr>
+
+@using (Html.BeginForm("HakkimdaGuncelle", "Admin", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.FotoUrl)
+    @Html.TextBoxFor(x => x.FotoUrl, new { @Class = "form-control", @required = "required" })
+    <br />
+
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, new { @Class = "form-control summernote", id = "summernote" })
+    <span class="text-danger">@ViewBag.mesaj</span>
+    <br />
+
+    @{
+        if (TempData["ID"] != null)
+        {
+            @Html.HiddenFor(x => x.YazarID, new { @Class = "form-control", @Value = TempData["ID"] })
+        }
+        else
+        {
+            @Html.HiddenFor(x => x.YazarID, new { @Class = "form-control", @Value = "1" })
+        }
+    }
+    <br />
+
+    @Html.HiddenFor(x => x.HakkimizdaID)
+</div>
+
+    @*<div class="my-3">
+        <h3>Seo Ayarları</h3>
+        <hr />
+
+        @Html.LabelFor(x => x.TitleTag)
+        @Html.TextBoxFor(x => x.TitleTag, new { @Class = "form-control", id = "t1" })
+        <div id="d1"></div>
+        <div id="d3"></div>
+        <br />
+
+        @Html.LabelFor(x => x.DescriptonTag)
+        @Html.TextAreaFor(x => x.DescriptonTag, 3, 1, new { @Class = "form-control", id = "t2", title = "Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" })
+        <div id="d2"></div>
+
+        <br />
+
+        @Html.LabelFor(x => x.ResimAltTag)
+        @Html.TextBoxFor(x => x.ResimAltTag, new { @Class = "form-control", id = "t4" })
+        <div id="d4"></div>
+        <br />
+
+        @Html.LabelFor(x => x.YazarID)
+        @Html.TextBoxFor(x => x.YazarID, new { @Class = "form-control" })
+        <br />
+    </div>*@
+
+    <button class="btn btn-success btn-block btn-lg ">Güncelle</button>
+}
+
+
+
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+<link href="~/summernote/summernote-lite.min.css" rel="stylesheet" />
+<script src="~/summernote/summernote-lite.min.js"></script>
+<script src="~/summernote/lang/summernote-tr-TR.min.js"></script>
+
+<script>
+    $('.summernote').summernote({
+        lang: 'tr-TR',
+        placeholder: 'Blog',
+        height: 200
+
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+
+        var yazi = $("#t1").val();
+        //$("#d1").html(yazi.length);
+
+        if (yazi.length <= 0) {
+            $("#d1").addClass("text-danger");
+            $("#d1").html("Lütfen başlık etiketini giriniz!");
+        }
+
+        $("#t1").on("keyup", function () {
+            var yazi = $("#t1").val();
+            $("#d1").html(yazi.length);
+
+            if (yazi.length >= 60) {
+                $("#d1").addClass("text-danger");
+                $("#d1").html("Başlık uzunluğu 60 karakterden fazla olmamalıdır!");
+            }
+            if (yazi.length >= 41 && yazi.length < 60) {
+                $("#d1").removeClass("text-danger");
+                $("#d1").addClass("text-success");
+                $("#d1").html("SEO başlık uzunluğu " + yazi.length + " tebrikler!");
+            }
+            if (yazi.length < 41) {
+                $("#d1").removeClass("text-success");
+                $("#d1").addClass("text-danger");
+                $("#d1").html("SEO başlık uzunluğu " + yazi.length + " lüften başlığı uzatın.");
+            }
+        });
+
+        var yazi = $("#t2").val();
+        //$("#d2").html(yazi.length);
+
+        if (yazi.length <= 0) {
+            $("#d2").addClass("text-danger");
+            $("#d2").html("Lütfen açıklama giriniz!");
+        }
+
+        $("#t2").on("keyup", function () {
+            var yazi = $("#t2").val();
+            //$("#d2").html(yazi.length);
+
+            if (yazi.length >= 150) {
+                $("#d2").addClass("text-danger");
+                $("#d2").html("SEO açıklama uzunluğu 150 karakterden fazla olmamalıdır!");
+            }
+            if (yazi.length >= 100 && yazi.length < 150) {
+                $("#d2").removeClass("text-danger");
+                $("#d2").addClass("text-success");
+                $("#d2").html("SEO açıklama uzunluğu " + yazi.length + " tebrikler!");
+            }
+            if (yazi.length < 100) {
+                $("#d2").removeClass("text-success");
+                $("#d2").addClass("text-danger");
+                $("#d2").html("SEO açıklama uzunluğu " + yazi.length + " lüften açıklamayı uzatın.");
+            }
+
+
+
+        });
+
+        var yazi = $("#t4").val();
+        //$("#d4").html(yazi.length);
+
+        if (yazi.length <= 0) {
+            $("#d4").addClass("text-danger");
+            $("#d4").html("Lütfen fotoğraf alt etiketini giriniz!");
+        }
+
+        $("#t4").on("keyup", function () {
+            var yazi = $("#t4").val();
+            $("#d4").html(yazi.length.toString());
+            if (yazi.length > 0) {
+                $("#d4").removeClass("text-danger");
+                $("#d4").addClass("text-success");
+                $("#d4").html("Tebrikler!");
+            }
+
+            if (yazi.length <= 0) {
+                $("#d4").addClass("text-danger");
+                $("#d4").html("Lütfen fotoğraf alt etiketini giriniz!");
+            }
+
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@model TezProje.Models.Siniflar.Bilgilendirme
+
+@{
+    ViewBag.Title = "BilgiGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="my-2 ">Bileşen Güncelle</h2>
+<hr>
+
+@using (Html.BeginForm("BilgiGuncelle", "Admin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.Baslik)
+        @Html.TextBoxFor(x => x.Baslik, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.LabelFor(x => x.Aciklama)
+        @Html.TextAreaFor(x => x.Aciklama, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.LabelFor(x => x.FotoUrl)
+        @Html.TextBoxFor(x => x.FotoUrl, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.HiddenFor(x => x.BilgiID)
+    </div>
+
+    
+    <button class="btn btn-success btn-block btn-lg ">Güncelle</button>
+}
+

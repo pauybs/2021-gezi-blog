@@ -1,0 +1,419 @@
+﻿@model TezProje.Models.Siniflar.ViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+<h2>Index</h2>
+
+<section class="content">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row ">
+                <div class="col-lg-6 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3 class="p-2">@ViewBag.toplamIcerik</h3>
+
+                            <p>Toplam İçerik</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-pencil-alt"></i></i>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3 class="p-2">@ViewBag.toplamYorum</h3>
+                            <p>Blog Yorumu</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-comment"></i></i>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-6 text-white">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color: #EE5A24">
+                        <div class="inner">
+                            <h3 class="p-2">@ViewBag.kullaniciYazi</h3>
+
+                            <p>Toplam Üye Yazısı</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-user-plus"></i></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-6 text-white">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color: #ED4C67">
+                        <div class="inner">
+                            <h3 class="p-2">@ViewBag.kullaniciYorum</h3>
+
+                            <p>Kullanıcı Yorumları</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-comments"></i></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col-lg-6 col-6 d-block d-md-block d-lg-none">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner text-white">
+                            <h3 class="p-2">@ViewBag.uye</h3>
+
+                            <p>Üye Sayısı</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-user"></i></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-6 d-block d-md-block d-lg-none">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h5 class="p-2 p- p-md-3">@ViewBag.enCokYazi</h5>
+
+                            <p>En Çok Yazı Paylaşan Üyemiz</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-rocket"></i></i>
+                        </div>
+                        @*@foreach (var x in ViewBag.enCokYazi)
+                    {
+                        <p>@x</p>
+                    }*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- small box -->
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header" style="background-color:#e1e1e1">
+                            <h3 class="card-title">Son Blog Yorumları</h3>
+
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <div class="direct-chat-messages" style="font-size:13px">
+                                <table class="table table-sm table-bordered table-hover ">
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th class="text-center">Sil</th>
+                                    </tr>
+
+                                    @foreach (var x in Model.yorum)
+                                    {
+                                        <tr>
+                                            <td>@x.Yorum</td>
+                                            <td class="text-center">
+                                                @{
+                                                    if (x.Durum == true)
+                                                    {
+                                                        <a href="/Admin/BlogYorumOnaylaIndex/@x.YorumID" class="btn btn-outline-danger btn-sm">Yorumu Kaldır</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="/Admin/BlogYorumOnaylaIndex/@x.YorumID" class="btn btn-warning btn-sm">Yorumu Onayla</a>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+
+                            </div>
+                            <!--/.direct-chat-messages-->
+                            <!-- Contacts are loaded here -->
+                            <div class="direct-chat-contacts">
+
+                                <!-- /.contacts-list -->
+                            </div>
+                            <!-- /.direct-chat-pane -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <span class="input-group-append">
+                                <a href="/Admin/BlogYorumlar" class="btn btn-primary btn-block ">Detaylar</a>
+                            </span>
+
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <!-- small box -->
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header" style="background-color:#e1e1e1">
+                            <h3 class="card-title">Son Kullanıcı Yazıları</h3>
+
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <div class="direct-chat-messages" style="font-size:13px">
+                                <table class="table table-sm table-bordered table-hover table-responsive-sm table-responsive-md ">
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Tarih</th>
+                                        <th class="text-center">Yayınla/Kaldır</th>
+                                    </tr>
+
+                                    @foreach (var x in Model.kullaniciYazi)
+                                    {
+                                        <tr>
+                                            <td>@x.YaziBaslik</td>
+                                            <td>@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</td>
+                                            <td class="text-center">
+                                                @{
+                                                    if (x.YaziDurum == true)
+                                                    {
+                                                        <a href="/Admin/UyePaylasimOnaylaAdmin/@x.YaziID" class="btn btn-outline-danger btn-sm">Kaldır</a>
+                                                    }
+                                                    else
+                                                    {
+                                            <a href="/Admin/UyePaylasimOnaylaAdmin/@x.YaziID" class="btn btn-warning btn-sm">Yayınla</a>
+                                                    }
+                                                }
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+
+                            </div>
+                            <!--/.direct-chat-messages-->
+                            <!-- Contacts are loaded here -->
+                            <div class="direct-chat-contacts">
+
+                                <!-- /.contacts-list -->
+                            </div>
+                            <!-- /.direct-chat-pane -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <span class="input-group-append">
+                                <a href="/Admin/UyePaylasimlar" class="btn btn-primary btn-block ">Detaylar</a>
+                            </span>
+
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-6 col-6 d-none d-lg-block ">
+                    <!-- small box -->
+                    <div class="small-box bg-warning">
+                        <div class="inner text-white">
+                            <h3 class="p-2">@ViewBag.uye</h3>
+
+                            <p>Üye Sayısı</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-user"></i></i>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- ./col -->
+                <div class="col-lg-6 col-6 d-none d-lg-block">
+                    <!-- small box -->
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h4 class="p-2 p- p-md-3">@ViewBag.enCokYazi</h4>
+
+                            <p>En Çok Yazı Paylaşan Üyemiz</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion"><i class="fas fa-rocket"></i></i>
+                        </div>
+                        @*@foreach (var x in ViewBag.enCokYazi)
+                    {
+                        <p>@x</p>
+                    }*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <!-- small box -->
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header" style="background-color:#e1e1e1">
+                            <h3 class="card-title">Son Yazılar</h3>
+
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <div class="direct-chat-messages" style="font-size:13px">
+                                <table class="table table-sm table-bordered table-hover table-responsive-sm table-responsive-md ">
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Tarih</th>
+                                        <th class="text-center">Sil</th>
+                                        <th class="text-center">Güncelle</th>
+                                    </tr>
+
+                                    @foreach (var x in Model.blog)
+                                    {
+                                        <tr>
+                                            <td>@x.Baslik</td>
+                                            <td>@x.Tarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</td>
+                                            <td class="text-center"><a href="/Admin/BlogSilAdmin/@x.BlogID" class="btn btn-sm btn-outline-danger">Sil</a></td>
+                                            <td class="text-center"><a href="/Admin/BlogSilAdmin/@x.BlogID" class="btn btn-sm btn-outline-success">Güncelle</a></td>
+                                        </tr>
+                                    }
+
+                                </table>
+
+                            </div>
+                            <!--/.direct-chat-messages-->
+                            <!-- Contacts are loaded here -->
+                            <div class="direct-chat-contacts">
+
+                                <!-- /.contacts-list -->
+                            </div>
+                            <!-- /.direct-chat-pane -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                           
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="col-12">
+                                            <div class="row p-1">
+                                                <a href="/Admin/BlogYazi" class="btn btn-primary btn-block ">Detaylar</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="col-12">
+                                            <div class="row p-1">
+                                                <a href="/Admin/YeniYazi" class="btn btn-success btn-block ">Yeni Yazı</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                      
+
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- small box -->
+                    <div class="card direct-chat direct-chat-primary">
+                        <div class="card-header" style="background-color:#e1e1e1">
+                            <h3 class="card-title">Son Kullanıcı Yorumları</h3>
+
+
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+                            <div class="direct-chat-messages" style="font-size:13px">
+                                <table class="table table-sm table-bordered table-hover ">
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th class="text-center">Sil</th>
+                                    </tr>
+
+                                    @foreach (var x in Model.kullaniciYorum)
+                                    {
+                                        <tr>
+                                            <td>@x.Yorum</td>
+                                            <td class="text-center">
+                                                @{
+                                                    if (x.Durum == true)
+                                                    {
+                                                        <a href="/Admin/KullaniciYorumOnaylaAdmin/@x.KullaniciYorumID" class="btn btn-outline-danger btn-sm">Yorumu Kaldır</a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a href="/Admin/KullaniciYorumOnaylaAdmin/@x.KullaniciYorumID" class="btn btn-warning btn-sm">Yorumu Onayla</a>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </table>
+
+                            </div>
+                            <!--/.direct-chat-messages-->
+                            <!-- Contacts are loaded here -->
+                            <div class="direct-chat-contacts">
+
+                                <!-- /.contacts-list -->
+                            </div>
+                            <!-- /.direct-chat-pane -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <span class="input-group-append">
+                                <a href="/Admin/KullaniciYorumlar" class="btn btn-primary btn-block ">Detaylar</a>
+                            </span>
+
+                        </div>
+                        <!-- /.card-footer-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

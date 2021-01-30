@@ -1,0 +1,203 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="author" content="Sinan" />
+    <title>@ViewBag.Title</title>
+    <link href="~/web/dist/css/styles.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/denee.css")*@
+    @*<link href="~/Views/Personel/deneme.css" rel="stylesheet" />*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/015eb3d236.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" href="/Admin/Index">Admin - Tatil Blog</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+            <i class="fas fa-bars"></i>
+        </button><!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            <div class="input-group">
+                @*<input class="form-control" type="text" placeholder="Aranacak gelimeyi girin." aria-label="Search" aria-describedby="basic-addon2" />*@
+                <div class="input-group-append">
+                    @{
+                        if (TempData["Admin"] != null)
+                        {
+                            <span>@TempData["Admin"] hoşgeldin!</span>
+                        }
+                    }
+
+                    <span class="pl-2 pr-2">-</span>
+                    <a href="https://localhost:44365/" class="text-light text-hover-info">Siteye Git</a>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">Ayarlar</a><a class="dropdown-item" href="#">Hesabım</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/Login/LogOut">Çıkış Yap</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">İşlemler</div>
+                        <a class="nav-link" href="/Admin/BlogYazi/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-scroll"></i></div>
+                            Blog Yazıları
+                        </a>
+
+                        <a class="nav-link" href="/Admin/HakkimdaListele/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                            Biz Kimiz?
+                        </a>
+
+                        <a class="nav-link" href="/Admin/Bilgilendirme/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-info-circle"></i></div>
+                            Bilgilendirme
+                        </a>
+
+                        <a class="nav-link" href="/Admin/Galeri/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                            Galeri
+                        </a>
+
+                        <a class="nav-link" href="/Admin/UyeSonYazi/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-clock"></i></div>
+                            Üye Son Yazılar
+                        </a>
+
+                        <a class="nav-link" href="/Admin/UyePaylasimlar/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user-edit"></i></div>
+                            Üye Paylaşımları
+                        </a>
+                        <a class="nav-link" href="/Admin/ILetisim/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            Harita
+                        </a>
+
+                        <a class="nav-link" href="/Admin/Mesajlar/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-envelope"></i></div>
+                            Mesajlar
+                        </a>
+
+                        <a class="nav-link" href="/Admin/UyeListesi/">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Üye Listesi
+                        </a>
+
+
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-comment"></i></div>
+                            Yorumlar
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="/Admin/BlogYorumlar/">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                                    Blog Yorumları
+                                </a>
+
+                                <a class="nav-link" href="/Admin/KullaniciYorumlar/">
+                                    <div class="sb-nav-link-icon"><i class="far fa-comments"></i></div>
+                                    Üye İçerik Yorumları
+                                </a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link" href="/Admin/SideBarHakkimda">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            SideBar
+                        </a>
+
+                        <a class="nav-link" href="/Admin/SosyalMedya">
+                            <div class="sb-nav-link-icon"><i class="fas fa-share-alt-square"></i></div>
+                            Sosyal Medya
+                        </a>
+
+                        <a class="nav-link" href="/Login/LogOut">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
+                            Çıkış Yap
+                        </a>
+
+                        @*<a class="nav-link" href="/Kargo/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box-open"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/Urun/UrunListesi">
+                            <div class="sb-nav-link-icon"><i class="fas fa-print"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/Istatistik/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-database"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/Alertler/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-concierge-bell"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/Galeri/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/UrunDetay/Index">
+                            <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                            Menü
+                        </a>
+
+                        <a class="nav-link" href="/Istatistik/KolayTablolar">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
+                            Menü
+                        </a>*@
+
+                    </div>
+                </div>
+                
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Tüm Hakları Saklıdır &copy; Tatil Blog @DateTime.Now.Year</div>
+                        <div>
+                            <a href="#">Kullanım Şartları</a>
+                                &amp;
+                            <a href="#">Bilgilendirme</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="~/web/dist/js/scripts.js"></script>
+</body>
+</html>

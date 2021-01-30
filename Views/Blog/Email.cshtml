@@ -1,0 +1,13 @@
+﻿@model TezProje.Models.Siniflar.Bulten
+
+@using (Html.BeginForm("EmailEkle", "Default", FormMethod.Post))
+{
+    <div class="form-group mb-1">
+        <input class="form-control form-control-sm" type="email" name="email" placeholder="E-Mail..." required pattern=".{1,75}" title="Lütfen 75 karakterden uzun girmeyiniz.">
+    </div>
+    <div class="form-group mb-0">
+        <button class="btn btn-primary btn-block btn-sm" type="submit">Abone Ol</button>
+    </div>
+}
+
+

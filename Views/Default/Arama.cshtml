@@ -1,0 +1,116 @@
+﻿@using TezProje.Models.Siniflar
+@model TezProje.Models.Siniflar.ViewModel
+
+@{
+    ViewBag.Title = "Arama";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<body>
+
+    <!-- Navigation -->
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row ">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8 my-4">
+
+                <h2 class="my-2">@ViewBag.mesaj</h2>
+
+                <!-- Blog Post -->
+
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var x in Model.blog)
+                        {
+                            ViewBag.yazi = Html.Raw(x.Aciklama).ToString();
+                            string yazi = ViewBag.yazi;
+                            string metin = System.Text.RegularExpressions.Regex.Replace(x.Aciklama, @"<(.|\n)*?>", string.Empty);
+
+                            <div class="card mb-4 shadow">
+                                @*<img src="@x.BlogResim" alt="@x.ResimAltTag" class="img-fluid" />*@
+                                <div class="card-body">
+                                    <h2 class="card-title">@x.Baslik</h2>
+                                    <p class="card-text">
+
+
+                                        @Html.Raw(metin.Substring(0, 200) + " ...")
+
+
+
+                                    </p>
+                                    <a href="/blog/@Url.FriendlyUrl(x.Baslik)/@x.BlogID" class="btn btn-primary">Devamını Oku &rarr;</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <ul class="list-inline small text-uppercase mb-0 text-right">
+                                        <li class="list-inline-item align-middle"><i class="fas fa-user"></i></li>
+                                        <li class="list-inline-item mr-0 text-gray align-middle">Yazar - </li>
+                                        <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#"> @x.Admin.KullaniciAdi</a></li>
+                                        <li class="list-inline-item text-gray align-middle mr-0">|</li>
+                                        <li class="list-inline-item text-gray align-middle">@x.Tarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        }
+
+
+
+                        foreach (var x in Model.kullaniciYazi)
+                        {
+                            ViewBag.yazi = Html.Raw(x.YaziAciklama).ToString();
+                            string yazi = ViewBag.yazi;
+                            string metin = System.Text.RegularExpressions.Regex.Replace(x.YaziAciklama, @"<(.|\n)*?>", string.Empty);
+
+                            <div class="card mb-4 shadow">
+                                @*<img src="@x.BlogResim" alt="@x.ResimAltTag" class="img-fluid" />*@
+                                <div class="card-body">
+                                    <h2 class="card-title">@x.YaziBaslik</h2>
+                                    <p class="card-text">
+
+
+                                        @Html.Raw(metin.Substring(0, 70) + " ...")
+
+
+
+                                    </p>
+                                    <a href="/uye-yazilari/@Url.FriendlyUrl(x.YaziBaslik)/@x.YaziID" class="btn btn-primary">Devamını Oku &rarr;</a>
+                                </div>
+                                <div class="card-footer text-muted">
+                                    <ul class="list-inline small text-uppercase mb-0 text-right">
+                                        <li class="list-inline-item align-middle"><i class="fas fa-user"></i></li>
+                                        <li class="list-inline-item mr-0 text-gray align-middle">Yazar - </li>
+                                        <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="#"> @x.Uye1.UyeKullaniciAdi</a></li>
+                                        <li class="list-inline-item text-gray align-middle mr-0">|</li>
+                                        <li class="list-inline-item text-gray align-middle">@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        }
+                    }
+                   
+                }
+
+
+            </div>
+
+
+            @Html.Action("SideBar", "Blog")
+
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Footer -->
+    <!-- Bootstrap core JavaScript -->
+    @*<script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+
+</body>
+

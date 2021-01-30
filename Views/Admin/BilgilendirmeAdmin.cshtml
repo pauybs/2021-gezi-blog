@@ -1,0 +1,21 @@
+﻿@model List<TezProje.Models.Siniflar.Bilgilendirme>
+
+
+    <tr>
+        <th>Baslık</th>
+        <th>Açıklama</th>
+        <th>Foto Url</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Baslik</td>
+            <td>@x.Aciklama</td>
+            <td>@x.FotoUrl</td>
+            <td><a href="/Admin/BilgiGetir/@x.BilgiID" class="btn btn-outline-success">Güncelle</a></td>
+
+        </tr>
+    }
+

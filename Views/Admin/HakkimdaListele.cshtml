@@ -1,0 +1,56 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Hakkimda>
+@{
+    ViewBag.Title = "HakkimdaListele";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+@if (TempData["bizkimiz"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'Yazı başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+
+<h2 class="my-2">Hakkımda</h2>
+
+
+<table class="table table-bordered table-hover table-responsive-sm table-responsive-md my-3 ">
+    <tr>
+        <th>Hakkımda ID</th>
+        <th>Fotoğraf</th>
+        <th>Açıklama</th>
+        <th>Yazar</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        //string metin = System.Text.RegularExpressions.Regex.Replace(x.Aciklama, @"<(.|\n)*?>", string.Empty);
+        string metin = System.Text.RegularExpressions.Regex.Replace(x.Aciklama, @"<[^>]+>|&nbsp;", " ").Trim();
+
+        <tr>
+            <td>@x.HakkimizdaID</td>
+            <td>@x.FotoUrl</td>
+            <td>@metin.Substring(0, 70)</td>
+            <td>@x.YazarID</td>
+
+        </tr>
+    }
+
+</table>
+<td><a href="/Admin/HakkimizdaGetir/1" class="btn btn-success btn-block btn-lg mb-3">Güncelle</a></td>
+
+<div class="card shadow-lg pl-2 pr-2">
+    @Html.Action("HakkimdaPartial", "Admin")
+</div>
+

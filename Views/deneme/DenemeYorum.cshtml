@@ -1,0 +1,14 @@
+﻿<div class="content-form p-3 mb-2">
+    <h3>Yorum Yap</h3>
+
+    <form method="post">
+
+        <input type="hidden" placeholder="ID" name="KullaniciYaziID" value="@ViewBag.id" required />
+        <input type="text" placeholder="Kullanıcı Adı" name="Ad" required pattern=".{1,75}" title="Lütfen 75 karakterden fazla girmeyiniz." />
+        <input type="email" placeholder="Mail Adresi" name="Mail" required pattern=".{1,75}" title="Lütfen 75 karakterden fazla girmeyiniz." />
+        <textarea placeholder="Yorum" name="Yorum" required></textarea>
+       
+        <input type="submit" value="Gönder" />
+    </form>
+</div>
+

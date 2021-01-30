@@ -1,0 +1,251 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@Html.Raw(ViewBag.Title) - Gezi Bloğu</title>
+    <meta name="description" content="@Html.Raw(ViewBag.Aciklama)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="canonical" href="https://localhost:44365/Default/Index" />
+
+
+    <link rel="stylesheet" href="~/distribution/vendor/bootstrap/css/bootstrap.min.css">
+
+    <style>
+
+        .owl-item > div {
+            cursor: pointer;
+            margin: 6% 8%;
+            transition: margin 0.4s ease;
+        }
+
+        .owl-item.center > div {
+            cursor: auto;
+            margin: 0;
+        }
+
+        .owl-item:not(.center) > div:hover {
+            opacity: .75;
+        }
+    </style>
+
+    <link rel="stylesheet" href="~/distribution/vendor/owl.carousel2/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/distribution/vendor/owl.carousel2/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+
+    <link rel="stylesheet" href="~/distribution/css/style.default.css" id="theme-stylesheet">
+
+    <link rel="stylesheet" href="~/distribution/css/custom.css">
+
+
+
+
+
+    <link rel="stylesheet" href="../thumber/css/magnific-popup.css">
+    <link rel="stylesheet" href="../thumber/css/aos.css">
+    <link rel="stylesheet" href="../thumber/css/fancybox.min.css">
+
+
+    <link href="~/Content/galeriStyle.css" rel="stylesheet" />
+
+
+    <script type="application/ld+json">
+
+        <script src="~/Content/schema.js"></script>
+    </script>
+
+
+
+
+</head>
+<body>
+    <!-- Header-->
+    <header class="header">
+        <!-- Top bar -->
+        <div class="py-2 ustArkaRenk text-dark">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 d-none d-lg-block text-left">
+                        <div class="dropdown text-small">
+                            <li class="list-inline-item"><a class="reset-anchor" href="/sitemap.xml">Site Map</a></li>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 d-none d-lg-block text-center">
+                        @Html.Action("SosyalMedya", "Blog")
+                    </div>
+
+                    <div class="col-lg-4">
+                        <ul class="list-inline mb-0 text-right">
+
+
+                            @if (User.IsInRole("A"))
+                            {
+                                <li class="list-inline-item"><a class="reset-anchor" href="/UyeAdmin/Index"><i class="fas fa-user"></i>  Profilim</a></li>
+                            }
+                            else
+                            {
+
+                                <li class="list-inline-item"><a class="reset-anchor" href="/UyeLogin/UyeKayit"><i class="fas fa-user"></i>  Üye Ol</a></li>
+                                <li class="list-inline-item">|</li>
+                                <li class="list-inline-item"><a class="reset-anchor" href="/UyeLogin/Index"><i class="fas fa-user-check"></i>  Giriş Yap</a></li>
+                            }
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Navbar 1 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-4">
+            <div class="container text-center">
+                <a class="navbar-brand mx-auto" href="/">
+                    <img class="mb-2 img-fluid" src="~/Content/images/logoo.png" alt="" width="140">
+                    <p class="text-small text-uppercase text-gray mb-0">Tatil & Seyahat Bloğu </p>
+                </a>
+            </div>
+        </nav>
+
+
+
+    </header>
+
+    <nav id="navbar_top" class="navbar  navbar-expand-lg navbar-light bg-light sticky-top shadow">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse sticky-top" id="navbarTogglerDemo01">
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 pl-lg-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Ana Sayfa <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/hakkimizda">Biz Kimiz</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blog">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/uye-yazilari">Sizin Kaleminizden</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/iletisim">İletişim</a>
+                </li>
+
+            </ul>
+            @using (Html.BeginForm("Arama", "Default", FormMethod.Post, new { @class = "form-inline my-2 my-lg-0" }))
+            {
+                <input class="form-control mr-sm-2" type="search" name="p" placeholder="Ara..." aria-label="Search">
+                <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Ara</button>
+            }
+
+
+
+        </div>
+    </nav>
+
+
+    @RenderBody()
+    <footer class="ustArkaRenk text-dark py-4">
+        <div class="container">
+            <div class="row py-2">
+                <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+                    <p class="small text-muted text-dark text-uppercase mb-0">Tüm Hakları Saklıdır - 2020</p>
+                </div>
+                <div class="col-lg-6 mb-2 mb-lg-0 text-center text-dark text-lg-right">
+                    @Html.Action("SosyalMedya", "Blog")
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript files-->
+
+    <script src="~/distribution/vendor/jquery/jquery.min.js"></script>
+    <script src="~/distribution/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/distribution/vendor/owl.carousel2/owl.carousel.min.js"></script>
+    <script src="~/distribution/js/front.js"></script>
+
+
+    <script>
+        var $owl = $('.owl-carousel');
+
+        $owl.children().each(function (index) {
+            $(this).attr('data-position', index); // NB: .attr() instead of .data()
+        });
+
+
+
+        $(document).on('click', '.owl-item>div', function () {
+            // see https://owlcarousel2.github.io/OwlCarousel2/docs/api-events.html#to-owl-carousel
+            var $speed = 300;  // in ms
+            $owl.trigger('to.owl.carousel', [$(this).data('position'), $speed]);
+        });
+
+
+
+
+
+
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 60,
+            nav: false,
+            center: true,
+            autoplay: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        });</script>
+
+
+
+    @*<script src="~/thumber/js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="~/thumber/js/jquery-ui.js"></script>
+        <script src="~/thumber/js/popper.min.js"></script>*@
+    @*<script src="js/jquery.stellar.min.js"></script>*@
+
+    @*<script src="~/thumber/js/jquery.magnific-popup.min.js"></script>
+        <script src="~/thumber/js/bootstrap-datepicker.min.js"></script>*@
+    @*<script src="~/thumber/js/jquery.countdown.min.js"></script>*@
+    <script src="~/thumber/js/aos.js"></script>
+
+    <script src="~/thumber/js/jquery.fancybox.min.js"></script>
+    <script src="~/thumber/js/main.js"></script>
+    @*<script src="~/thumber/js/swiper.min.js"></script>
+        <script src="~/thumber/js/jquery.scrollbar.js"></script>*@
+
+
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113371987-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-113371987-1');
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Blog>
+
+<style>
+    /* .siyah {
+        background-color: black;
+        opacity:0.5
+
+    }*/
+    .siyah .yazi {
+        /*opacity:1;
+        color:white;*/
+        font-family: Coolvetica;
+        color: black;
+    }
+
+    .item a:link {
+        text-decoration: none;
+    }
+</style>
+
+<div class="owl-carousel">
+
+    @foreach (var x in Model)
+    {
+
+        <div class="item ">
+            <a class="" href="/blog/@Url.FriendlyUrl(x.Baslik)/@x.BlogID">
+                <img src="@x.BlogResim" alt="@x.ResimAltTag" class="rounded lazy">
+                <div class="text-center p-2 siyah mt-1 ">
+                    <div class="yazi">
+                        @x.Baslik
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    }
+
+
+</div>
+
+<script src="~/Views/Default/jquery.lazyload.js"></script>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        $("img.lazy").lazyload();
+    });
+</script>

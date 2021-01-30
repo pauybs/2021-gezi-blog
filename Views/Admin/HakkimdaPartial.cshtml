@@ -1,0 +1,27 @@
+﻿@model List<TezProje.Models.Siniflar.Hakkimda> 
+
+<section class="py-4">
+    @foreach (var x in Model)
+    {
+       
+        <div class="container text-center">
+
+            <h1>Biz Kimiz?</h1>
+            <p class="mb-3">Dünyayı gezen ve gezilmedik yer bırakmayan kişileriz!</p>
+
+
+
+        </div><img class="w-100 py-2 mb-4 img-fluid" src="@x.FotoUrl" alt="">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 mb-5 mb-lg-0">
+                    <p class="lead first-letter-styled line-height-lg">@Html.Raw(x.Aciklama)</p>
+                    <div class="px-lg-5 mb-5">
+                        <blockquote class="blockquote-custom">Öyle zamanlar olur ki; nereye gittiğin önemini yitirir. Çünkü asıl önemli olan, yanında kiminle gittiğindir… <br /> - Tolstoy</blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</section>

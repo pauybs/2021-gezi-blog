@@ -1,0 +1,39 @@
+﻿@using TezProje.Models.Siniflar
+@model List<KullaniciYazi>
+@{
+    ViewBag.Title = "UyeDetay";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="my-2">Üye Paylaşımları</h2>
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Üye Kullanıcı Adı: <b>@ViewBag.uye</b></li>
+
+</ol>
+
+<table class="table table-bordered table-hover table-responsive-sm table-responsive-md my-3 ">
+    <tr>
+        <th>Yazı ID</th>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+        <th>Sitede Gör</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        string metin = System.Text.RegularExpressions.Regex.Replace(x.YaziAciklama, @"<(.|\n)*?>", string.Empty);
+
+        <tr>
+            <td>@x.YaziID</td>
+            <td>@x.YaziBaslik</td>
+            <td>@metin.Substring(0,50)</td>
+            <td>@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</td>
+            <td><a href="/deneme/DenemeDetay/@x.YaziID" target="_blank" class="btn btn-info">Sitede Gör</a></td>
+        </tr>
+
+    }
+
+</table>
+

@@ -1,0 +1,155 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Blog>
+@{
+    //ViewBag.Title = "BlogDetay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link rel="stylesheet" href="~/thumber/css/magnific-popup.css">
+<link rel="stylesheet" href="~/thumber/css/jquery-ui.css">
+
+<link rel="stylesheet" href="~/thumber/css/bootstrap-datepicker.css">
+
+<link rel="stylesheet" href="~/thumber/fonts/flaticon/font/flaticon.css">
+
+<link rel="stylesheet" href="~/thumber/css/aos.css">
+<link rel="stylesheet" href="~/thumber/css/jquery.scrollbar.css">
+<link rel="stylesheet" href="~/thumber/css/fancybox.min.css">
+<link rel="stylesheet" href="~/thumber/css/swiper.min.css">
+
+<link href="~/Content/galeriStyle.css" rel="stylesheet" />
+
+
+
+<link href="~/Content/formYorum.css" rel="stylesheet" />
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <!-- Post Content Column -->
+
+        <div class="col-lg-8 my-4">
+
+            <div class="card mb-4 shadow">
+                @foreach (var x in Model)
+                {
+
+                    ViewBag.Title = x.TitleTag;
+                    ViewBag.Aciklama = x.DescriptonTag;
+                    <div class="p-3">
+
+                        <!-- Title -->
+                        <h1 class="mt-2">@x.Baslik</h1>
+
+                        <!-- Author -->
+
+
+                        <ol class="breadcrumb  list-inline small text-uppercase mb-0">
+                            <li class="list-inline-item align-middle"><i class="fas fa-map-marker-alt"></i></li>
+                            <li class="list-inline-item mr-0 text-gray align-middle">AMERİKA</li>
+                            <li class="list-inline-item text-gray align-middle mr-1 ml-1">|</li>
+                            <li class="list-inline-item align-middle"><i class="fas fa-user"></i></li>
+                            <li class="list-inline-item mr-0 text-gray align-middle">Yazar - </li>
+                            <li class="list-inline-item align-middle mr-0"><a class="font-weight-bold reset-anchor" href="/Blog/Yazar/@x.YazarID">@x.Admin.KullaniciAdi</a></li>
+                            <li class="list-inline-item text-gray align-middle mr-1 ml-1">|</li>
+                            <li class="list-inline-item text-gray align-middle">@x.Tarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</li>
+
+                        </ol>
+
+
+                    </div>
+
+
+
+
+
+
+                    <!-- Preview Image -->
+                    <img class="img-fluid rounded" src="@x.BlogResim" alt="@x.ResimAltTag" />
+
+                    <hr>
+
+                    <!-- Post Content -->
+                    <div class="p-3">
+
+
+                        <p>
+                            @Html.Raw(x.Aciklama)
+                        </p>
+
+
+                        @*<p>Vegas’ı şöyle düşünün; Bir yere bir tabela mı koyulacak? En büyüğünü koymuşlar. Bir yere yeni bir otel mi açılacak, 3000 odalı olsun, içine de 4 tane Starbucks, 15 tane restoran, 3 tane club koyulsun. Restoran mı açıldı? Yemeklerin bir porsiyonu 1 aileyi doyuracak ebatlarda olsun, çünkü niye olmasın ki? Bir yerde parti mi gerçekleşiyor? SAPITIN SAPITABİLDİĞİNİZ KADAR. Ciddi söylüyoruz, hayatımızda bu kadar aşırı, bu kadar abartılı bir yer görmemiştik. Sanki dünyanın tüm elektriğini burası tüketiyor, tüm yemeğini burası yiyor, tüm enerjiyi burası harcıyor, sırf yılda 2 gün elektiriği kesseler dünya daha iyi bir yer haline gelirmiş gibi falan hissediyorsunuz. </p>
+
+                            <p>Las Vegas’a ne zaman gideceğiniz konusunu kategorilendirmemiz gerektiğini düşünüyoruz, çünkü bu gibi bir yere giderken göz önünde bulundurabileceğiniz pek çok faktör var ve öyle şehir gezisi yapmaya benzemiyor. O yüzden madde madde ilerleyelim:</p>
+
+                            <blockquote class="blockquote">
+                                <p class="mb-0">*Hava Durumuna Göre: Bilmeniz gereken bir diğer önemli şey: Vegas’ın çölün orta yerine kurulmuş olması buranın hep sıcak olduğu anlamına gelmiyor.</p>
+                                <footer class="blockquote-footer">
+                                    Someone famous in
+                                    <cite title="Source Title">Source Title</cite>
+                                </footer>
+                            </blockquote>
+
+                            <p>Yani Kasım – Şubat arası Vegas’a gidecek olursanız basbayağı serin bir havayla karşılaşabilirsiniz, dolayısıyla eğer yüzeyim güneşleneyim, havuz partilerine katılayım gibi bir isteğiniz varsa o dönemleri es geçin. Fakat eğer sıcaklarla başa çıkamayan, sıcakta sinir krizi geçiren bir insana dönüşüyorsanız Haziran – Temmuz – Ağustos triosu da sizi bozabilir, artık karar sizin.</p>*@
+
+                        @*<p>*Etkinliklere Göre: Vegas tam bir etkinlik cenneti, bütün şehir eğlenmek ve eğlendirmek üzerine kurulu, şehrin özet cümlesi bu diyebiliriz. Velev ki Amerika geziniz sezon dışı kabul edilebilecek bir döneme denk geldi, bu Vegas’a gidemeyeceğiniz anlamına mı geliyor? Yoo, gayet de gidilir. Bir konser, bir komedi şovu, bir gösteri, bir müzikal, artık aklınıza ne geliyorsa (ve gelmiyorsa) ona göre de plan yapabilirsiniz. Mesela Backstreet Boys Vegas’ta çıkmaya başlıyor diye billboardlar görmüştük, bi’ kurcalasınız mı?</p>*@
+
+                    </div>
+
+                }
+                <hr>
+
+                <!-- Comments Form -->
+                @*<div class="card my-4">
+                        <h5 class="card-header">Leave a Comment:</h5>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>*@
+
+                <!-- Single Comment -->
+                <!-- Comment with nested comments -->
+
+                @Html.Action("YorumListele", "Blog")
+
+                @Html.Action("Yorum", "Blog")
+
+            </div>
+        </div>
+
+        @Html.Action("SideBar", "Blog")
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+<!-- Footer -->
+<!-- Bootstrap core JavaScript -->
+<!--<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+
+
+
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+@if (TempData["yorumblog"] != null)
+{
+
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'Yorumunuz yönetici tarafından onaylandıktan sonra yayınlanacaktır.',
+            showConfirmButton: false,
+            timer: 2500
+        })
+    </script>
+}

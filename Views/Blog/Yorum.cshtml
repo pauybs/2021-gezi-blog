@@ -1,0 +1,22 @@
+﻿<div class="content-form p-3 mb-2">
+    <h3>Yorum Yap</h3>
+
+    <form method="post">
+
+        <input type="hidden" placeholder="ID" name="Blogid" value="@ViewBag.id" required />
+        <input type="text" placeholder="Ad" name="KullaniciAdi" required pattern=".{1,75}" title="Lütfen 75 karakterden fazla girmeyiniz." />
+        <input type="email"  placeholder="Mail Adresi" name="Mail" pattern=".{1,75}" title="Lütfen 75 karakterden fazla girmeyiniz." required/>
+
+        <textarea placeholder="Yorum" name="Yorum" required></textarea>
+        @*<div class="row align-items-center">
+            <div class="col-12">
+                <div class="row justify-content-center">
+
+                </div>
+
+            </div>
+        </div>*@
+        <input type="submit" value="Gönder" />
+    </form>
+</div>
+

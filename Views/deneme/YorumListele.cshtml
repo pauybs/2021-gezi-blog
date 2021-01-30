@@ -1,0 +1,25 @@
+﻿@model List<TezProje.Models.Siniflar.KullaniciYorum>
+
+<link href="~/web2/css/style.css" rel="stylesheet" />
+
+@foreach (var x in Model)
+{
+
+
+    <ul class="comment-list p-3 m-2">
+
+        <li>
+            <img src="~/web2/images/avatar.png" class="img-responsive" alt="" style="height:50px; width:50px">
+            <div class="desc">
+                <p><b>@x.Ad</b>: @x.Yorum </p>
+                <span class="float-right " style="font-size: 13px;color: #848484">@x.YorumTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</span>
+            </div>
+            
+        </li>
+
+
+    </ul>
+
+}
+
+

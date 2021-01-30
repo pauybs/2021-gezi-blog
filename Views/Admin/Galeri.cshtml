@@ -1,0 +1,98 @@
+﻿@model List<TezProje.Models.Siniflar.Harita>
+@{
+    ViewBag.Title = "Galeri";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@*<link rel="stylesheet" href="~/thumber/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery-ui.css">
+
+    <link rel="stylesheet" href="~/thumber/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="~/thumber/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="~/thumber/css/aos.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="~/thumber/css/fancybox.min.css">*@
+@*<link rel="stylesheet" href="~/thumber/css/swiper.min.css">*@
+
+<link href="~/Content/galeriStyle.css" rel="stylesheet" />
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+@if (TempData["galeri"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'Fotoğraf başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+
+
+    <main class="main-content py-5">
+        <header class="text-center mb-5">
+            <h2>Mini Galeri</h2>
+        </header>
+        <div class="container photos">
+            <div class="row align-items-stretch">
+                @foreach (var x in Model)
+                {
+
+
+                    <div class="col-6 col-md-6 col-lg-4" data-aos="fade-up">
+                        <a href="@x.Frame" class="d-block photo-item" data-fancybox="gallery">
+                            <img src="@x.Frame" alt="Image" class="img-fluid" />
+                            <div class="photo-text-more">
+                                <span class="icon icon-search"></span>
+                            </div>
+                        </a>
+
+                        <div class="row justify-content-center mb-3">
+                            <a href="/Admin/GaleriGetir/@x.HaritaID" class="btn btn-success ">Güncelle</a>
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </main>
+
+</div>
+
+
+<script src="~/thumber/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/thumber/js/jquery-ui.js"></script>
+<script src="~/thumber/js/popper.min.js"></script>
+<!-- <script src="js/jquery.stellar.min.js"></script> -->
+<script src="~/thumber/js/jquery.countdown.min.js"></script>
+<script src="~/thumber/js/jquery.magnific-popup.min.js"></script>
+<script src="~/thumber/js/bootstrap-datepicker.min.js"></script>
+<script src="~/thumber/js/aos.js"></script>
+
+<script src="~/thumber/js/jquery.fancybox.min.js"></script>
+<script src="~/thumber/js/swiper.min.js"></script>
+<script src="~/thumber/js/jquery.scrollbar.js"></script>
+<script src="~/thumber/js/main.js"></script>

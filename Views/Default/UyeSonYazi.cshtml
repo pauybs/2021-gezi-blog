@@ -1,0 +1,35 @@
+﻿@using TezProje.Models.Siniflar
+@model List<TezProje.Models.Siniflar.KullaniciYazi>
+
+<div class="container py-4">
+
+    <header class="mb-5 text-center">
+        @Html.Action("UyeSonYaziBaslik", "Default")
+    </header>
+    <div class="row text-center">
+        @foreach (var x in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="row ">
+                    <div class="col-12">
+                        <div class="row p-2 justify-content-center">
+
+                            <a class="reset-anchor d-block" href="/uye-yazilari/@Url.FriendlyUrl(x.YaziBaslik)/@x.YaziID">
+
+                                <img class="mb-4 img-fluid" src="@x.YaziResim" alt="@x.YaziResimAltTag" style="max-height:240px">
+                                <h3 class="h5">@x.YaziBaslik</h3>
+                                <p class="text-muted text-small">@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</p>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        }
+    </div>
+
+</div>
+
+

@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TatilBlogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="200" />
+          <Property Name="Mail" Type="varchar" MaxLength="200" />
+          <Property Name="Sifre" Type="varchar" MaxLength="100" />
+          <Property Name="AdSoyad" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Basliklar">
+          <Key>
+            <PropertyRef Name="BaslikID" />
+          </Key>
+          <Property Name="BaslikID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnaBaslik" Type="varchar(max)" />
+          <Property Name="AnaAciklama" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Bilgilendirme">
+          <Key>
+            <PropertyRef Name="BilgiID" />
+          </Key>
+          <Property Name="BilgiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FotoUrl" Type="varchar(max)" />
+          <Property Name="Baslik" Type="varchar(max)" />
+          <Property Name="Aciklama" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="varchar(max)" />
+          <Property Name="Aciklama" Type="varchar(max)" />
+          <Property Name="BlogResim" Type="varchar(max)" />
+          <Property Name="YazarID" Type="int" />
+          <Property Name="ResimAltTag" Type="varchar(max)" />
+          <Property Name="TitleTag" Type="varchar(max)" />
+          <Property Name="DescriptonTag" Type="varchar(max)" />
+          <Property Name="Tarih" Type="datetime" />
+          <Property Name="Durum" Type="bit" />
+        </EntityType>
+        <EntityType Name="Bulten">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Hakkimda">
+          <Key>
+            <PropertyRef Name="HakkimizdaID" />
+          </Key>
+          <Property Name="HakkimizdaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FotoUrl" Type="varchar(max)" />
+          <Property Name="Aciklama" Type="varchar(max)" />
+          <Property Name="YazarID" Type="int" />
+        </EntityType>
+        <EntityType Name="Harita">
+          <Key>
+            <PropertyRef Name="HaritaID" />
+          </Key>
+          <Property Name="HaritaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Frame" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="İletisim">
+          <Key>
+            <PropertyRef Name="İletisimID" />
+          </Key>
+          <Property Name="İletisimID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="varchar" MaxLength="100" />
+          <Property Name="Mail" Type="varchar" MaxLength="200" />
+          <Property Name="Konu" Type="varchar(max)" />
+          <Property Name="Mesaj" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="KullaniciYazi">
+          <Key>
+            <PropertyRef Name="YaziID" />
+          </Key>
+          <Property Name="YaziID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YaziBaslik" Type="varchar(max)" />
+          <Property Name="YaziAciklama" Type="varchar(max)" />
+          <Property Name="YaziResim" Type="varchar(max)" />
+          <Property Name="Uye" Type="int" />
+          <Property Name="YaziResimAltTag" Type="varchar(max)" />
+          <Property Name="YaziTitleTag" Type="varchar(max)" />
+          <Property Name="YaziDescriptonTag" Type="varchar(max)" />
+          <Property Name="YaziTarih" Type="datetime" />
+          <Property Name="YaziDurum" Type="bit" />
+        </EntityType>
+        <EntityType Name="KullaniciYorum">
+          <Key>
+            <PropertyRef Name="KullaniciYorumID" />
+          </Key>
+          <Property Name="KullaniciYorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="varchar" MaxLength="100" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="Yorum" Type="varchar(max)" />
+          <Property Name="KullaniciYaziID" Type="int" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="YorumTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UyeKullaniciAdi" Type="varchar" MaxLength="100" />
+          <Property Name="UyeMail" Type="varchar" MaxLength="200" />
+          <Property Name="UyeSifre" Type="varchar" MaxLength="100" />
+          <Property Name="UyeDurum" Type="bit" />
+          <Property Name="UyeAd" Type="varchar" MaxLength="100" />
+          <Property Name="UyeTarih" Type="datetime" />
+          <Property Name="UyeHakkimda" Type="varchar(max)" />
+          <Property Name="UyeFoto" Type="varchar(max)" />
+          <Property Name="UyeSehir" Type="varchar(max)" />
+          <Property Name="Yetki" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="100" />
+          <Property Name="Mail" Type="varchar" MaxLength="100" />
+          <Property Name="Yorum" Type="varchar(max)" />
+          <Property Name="BlogID" Type="int" />
+          <Property Name="Durum" Type="bit" />
+          <Property Name="YorumTarih" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Blog_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hakkimda_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Hakkimda" Type="Self.Hakkimda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Hakkimda">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KullaniciYazi_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="KullaniciYazi" Type="Self.KullaniciYazi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="KullaniciYazi">
+              <PropertyRef Name="Uye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KullaniciYorum_KullaniciYazi">
+          <End Role="KullaniciYazi" Type="Self.KullaniciYazi" Multiplicity="0..1" />
+          <End Role="KullaniciYorum" Type="Self.KullaniciYorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYazi">
+              <PropertyRef Name="YaziID" />
+            </Principal>
+            <Dependent Role="KullaniciYorum">
+              <PropertyRef Name="KullaniciYaziID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TatilBlogModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Basliklar" EntityType="Self.Basliklar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bilgilendirme" EntityType="Self.Bilgilendirme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bulten" EntityType="Self.Bulten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hakkimda" EntityType="Self.Hakkimda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Harita" EntityType="Self.Harita" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="İletisim" EntityType="Self.İletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciYazi" EntityType="Self.KullaniciYazi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KullaniciYorum" EntityType="Self.KullaniciYorum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blog_Admin" Association="Self.FK_Blog_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hakkimda_Admin" Association="Self.FK_Hakkimda_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Hakkimda" EntitySet="Hakkimda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KullaniciYazi_Uye" Association="Self.FK_KullaniciYazi_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="KullaniciYazi" EntitySet="KullaniciYazi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KullaniciYorum_KullaniciYazi" Association="Self.FK_KullaniciYorum_KullaniciYazi">
+            <End Role="KullaniciYazi" EntitySet="KullaniciYazi" />
+            <End Role="KullaniciYorum" EntitySet="KullaniciYorum" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Blog" Association="Self.FK_Yorumlar_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TatilBlogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AdSoyad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Blog_Admin" FromRole="Admin" ToRole="Blog" />
+          <NavigationProperty Name="Hakkimda" Relationship="Self.FK_Hakkimda_Admin" FromRole="Admin" ToRole="Hakkimda" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BlogResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YazarID" Type="Int32" />
+          <Property Name="ResimAltTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TitleTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DescriptonTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Blog_Admin" FromRole="Blog" ToRole="Admin" />
+          <NavigationProperty Name="Yorumlar" Relationship="Self.FK_Yorumlar_Blog" FromRole="Blog" ToRole="Yorumlar" />
+          <Property Name="Durum" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Hakkimda">
+          <Key>
+            <PropertyRef Name="HakkimizdaID" />
+          </Key>
+          <Property Name="HakkimizdaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YazarID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Hakkimda_Admin" FromRole="Hakkimda" ToRole="Admin" />
+        </EntityType>
+        <EntityType Name="İletisim">
+          <Key>
+            <PropertyRef Name="İletisimID" />
+          </Key>
+          <Property Name="İletisimID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Konu" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Mesaj" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KullaniciYazi">
+          <Key>
+            <PropertyRef Name="YaziID" />
+          </Key>
+          <Property Name="YaziID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YaziBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YaziAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YaziResim" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Uye" Type="Int32" />
+          <Property Name="YaziResimAltTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YaziTitleTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YaziDescriptonTag" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YaziTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Uye1" Relationship="Self.FK_KullaniciYazi_Uye" FromRole="KullaniciYazi" ToRole="Uye" />
+          <Property Name="YaziDurum" Type="Boolean" />
+          <NavigationProperty Name="KullaniciYorum" Relationship="TatilBlogModel.FK_KullaniciYorum_KullaniciYazi" FromRole="KullaniciYazi" ToRole="KullaniciYorum" />
+        </EntityType>
+        <EntityType Name="Uye">
+          <Key>
+            <PropertyRef Name="UyeID" />
+          </Key>
+          <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UyeKullaniciAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UyeMail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UyeSifre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="KullaniciYazi" Relationship="Self.FK_KullaniciYazi_Uye" FromRole="Uye" ToRole="KullaniciYazi" />
+          <Property Name="UyeDurum" Type="Boolean" />
+          <Property Name="UyeAd" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UyeTarih" Type="DateTime" Precision="3" />
+          <Property Name="UyeHakkimda" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UyeFoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UyeSehir" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Yorumlar">
+          <Key>
+            <PropertyRef Name="YorumID" />
+          </Key>
+          <Property Name="YorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BlogID" Type="Int32" />
+          <NavigationProperty Name="Blog" Relationship="Self.FK_Yorumlar_Blog" FromRole="Yorumlar" ToRole="Blog" />
+          <Property Name="Durum" Type="Boolean" />
+          <Property Name="YorumTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_Blog_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hakkimda_Admin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Hakkimda" Type="Self.Hakkimda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Hakkimda">
+              <PropertyRef Name="YazarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yorumlar_Blog">
+          <End Role="Blog" Type="Self.Blog" Multiplicity="0..1" />
+          <End Role="Yorumlar" Type="Self.Yorumlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="BlogID" />
+            </Principal>
+            <Dependent Role="Yorumlar">
+              <PropertyRef Name="BlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KullaniciYazi_Uye">
+          <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+          <End Role="KullaniciYazi" Type="Self.KullaniciYazi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uye">
+              <PropertyRef Name="UyeID" />
+            </Principal>
+            <Dependent Role="KullaniciYazi">
+              <PropertyRef Name="Uye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TatilBlogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admin" EntityType="Self.Admin" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" />
+          <EntitySet Name="Hakkimda" EntityType="Self.Hakkimda" />
+          <EntitySet Name="İletisim" EntityType="Self.İletisim" />
+          <EntitySet Name="KullaniciYazi" EntityType="Self.KullaniciYazi" />
+          <EntitySet Name="Uye" EntityType="Self.Uye" />
+          <EntitySet Name="Yorumlar" EntityType="Self.Yorumlar" />
+          <AssociationSet Name="FK_Blog_Admin" Association="Self.FK_Blog_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hakkimda_Admin" Association="Self.FK_Hakkimda_Admin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Hakkimda" EntitySet="Hakkimda" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yorumlar_Blog" Association="Self.FK_Yorumlar_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Yorumlar" EntitySet="Yorumlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KullaniciYazi_Uye" Association="Self.FK_KullaniciYazi_Uye">
+            <End Role="Uye" EntitySet="Uye" />
+            <End Role="KullaniciYazi" EntitySet="KullaniciYazi" />
+          </AssociationSet>
+          <EntitySet Name="Harita" EntityType="TatilBlogModel.Harita" />
+          <EntitySet Name="Basliklar" EntityType="TatilBlogModel.Basliklar" />
+          <EntitySet Name="Bilgilendirme" EntityType="TatilBlogModel.Bilgilendirme" />
+          <EntitySet Name="KullaniciYorum" EntityType="TatilBlogModel.KullaniciYorum" />
+          <AssociationSet Name="FK_KullaniciYorum_KullaniciYazi" Association="TatilBlogModel.FK_KullaniciYorum_KullaniciYazi">
+            <End Role="KullaniciYazi" EntitySet="KullaniciYazi" />
+            <End Role="KullaniciYorum" EntitySet="KullaniciYorum" />
+          </AssociationSet>
+          <EntitySet Name="Bulten" EntityType="TatilBlogModel.Bulten" />
+        </EntityContainer>
+        <EntityType Name="Harita">
+          <Key>
+            <PropertyRef Name="HaritaID" />
+          </Key>
+          <Property Name="HaritaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Frame" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Basliklar">
+          <Key>
+            <PropertyRef Name="BaslikID" />
+          </Key>
+          <Property Name="BaslikID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnaBaslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AnaAciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Bilgilendirme">
+          <Key>
+            <PropertyRef Name="BilgiID" />
+          </Key>
+          <Property Name="BilgiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FotoUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Baslik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="KullaniciYorum">
+          <Key>
+            <PropertyRef Name="KullaniciYorumID" />
+          </Key>
+          <Property Name="KullaniciYorumID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KullaniciYaziID" Type="Int32" />
+          <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="KullaniciYazi" Relationship="TatilBlogModel.FK_KullaniciYorum_KullaniciYazi" FromRole="KullaniciYorum" ToRole="KullaniciYazi" />
+          <Property Name="YorumTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_KullaniciYorum_KullaniciYazi">
+          <End Type="TatilBlogModel.KullaniciYazi" Role="KullaniciYazi" Multiplicity="0..1" />
+          <End Type="TatilBlogModel.KullaniciYorum" Role="KullaniciYorum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KullaniciYazi">
+              <PropertyRef Name="YaziID" />
+            </Principal>
+            <Dependent Role="KullaniciYorum">
+              <PropertyRef Name="KullaniciYaziID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Bulten">
+          <Key>
+            <PropertyRef Name="MailID" />
+          </Key>
+          <Property Name="MailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TatilBlogModelStoreContainer" CdmEntityContainer="TatilBlogEntities">
+          <EntitySetMapping Name="Admin">
+            <EntityTypeMapping TypeName="TatilBlogModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blog">
+            <EntityTypeMapping TypeName="TatilBlogModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="BlogResim" ColumnName="BlogResim" />
+                <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+                <ScalarProperty Name="ResimAltTag" ColumnName="ResimAltTag" />
+                <ScalarProperty Name="TitleTag" ColumnName="TitleTag" />
+                <ScalarProperty Name="DescriptonTag" ColumnName="DescriptonTag" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hakkimda">
+            <EntityTypeMapping TypeName="TatilBlogModel.Hakkimda">
+              <MappingFragment StoreEntitySet="Hakkimda">
+                <ScalarProperty Name="HakkimizdaID" ColumnName="HakkimizdaID" />
+                <ScalarProperty Name="FotoUrl" ColumnName="FotoUrl" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="YazarID" ColumnName="YazarID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="İletisim">
+            <EntityTypeMapping TypeName="TatilBlogModel.İletisim">
+              <MappingFragment StoreEntitySet="İletisim">
+                <ScalarProperty Name="İletisimID" ColumnName="İletisimID" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Konu" ColumnName="Konu" />
+                <ScalarProperty Name="Mesaj" ColumnName="Mesaj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciYazi">
+            <EntityTypeMapping TypeName="TatilBlogModel.KullaniciYazi">
+              <MappingFragment StoreEntitySet="KullaniciYazi">
+                <ScalarProperty Name="YaziDurum" ColumnName="YaziDurum" />
+                <ScalarProperty Name="YaziID" ColumnName="YaziID" />
+                <ScalarProperty Name="YaziBaslik" ColumnName="YaziBaslik" />
+                <ScalarProperty Name="YaziAciklama" ColumnName="YaziAciklama" />
+                <ScalarProperty Name="YaziResim" ColumnName="YaziResim" />
+                <ScalarProperty Name="Uye" ColumnName="Uye" />
+                <ScalarProperty Name="YaziResimAltTag" ColumnName="YaziResimAltTag" />
+                <ScalarProperty Name="YaziTitleTag" ColumnName="YaziTitleTag" />
+                <ScalarProperty Name="YaziDescriptonTag" ColumnName="YaziDescriptonTag" />
+                <ScalarProperty Name="YaziTarih" ColumnName="YaziTarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uye">
+            <EntityTypeMapping TypeName="TatilBlogModel.Uye">
+              <MappingFragment StoreEntitySet="Uye">
+                <ScalarProperty Name="Yetki" ColumnName="Yetki" />
+                <ScalarProperty Name="UyeSehir" ColumnName="UyeSehir" />
+                <ScalarProperty Name="UyeFoto" ColumnName="UyeFoto" />
+                <ScalarProperty Name="UyeHakkimda" ColumnName="UyeHakkimda" />
+                <ScalarProperty Name="UyeTarih" ColumnName="UyeTarih" />
+                <ScalarProperty Name="UyeAd" ColumnName="UyeAd" />
+                <ScalarProperty Name="UyeDurum" ColumnName="UyeDurum" />
+                <ScalarProperty Name="UyeID" ColumnName="UyeID" />
+                <ScalarProperty Name="UyeKullaniciAdi" ColumnName="UyeKullaniciAdi" />
+                <ScalarProperty Name="UyeMail" ColumnName="UyeMail" />
+                <ScalarProperty Name="UyeSifre" ColumnName="UyeSifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yorumlar">
+            <EntityTypeMapping TypeName="TatilBlogModel.Yorumlar">
+              <MappingFragment StoreEntitySet="Yorumlar">
+                <ScalarProperty Name="YorumTarih" ColumnName="YorumTarih" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="YorumID" ColumnName="YorumID" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Harita">
+            <EntityTypeMapping TypeName="TatilBlogModel.Harita">
+              <MappingFragment StoreEntitySet="Harita">
+                <ScalarProperty Name="Frame" ColumnName="Frame" />
+                <ScalarProperty Name="HaritaID" ColumnName="HaritaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Basliklar">
+            <EntityTypeMapping TypeName="TatilBlogModel.Basliklar">
+              <MappingFragment StoreEntitySet="Basliklar">
+                <ScalarProperty Name="AnaAciklama" ColumnName="AnaAciklama" />
+                <ScalarProperty Name="AnaBaslik" ColumnName="AnaBaslik" />
+                <ScalarProperty Name="BaslikID" ColumnName="BaslikID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bilgilendirme">
+            <EntityTypeMapping TypeName="TatilBlogModel.Bilgilendirme">
+              <MappingFragment StoreEntitySet="Bilgilendirme">
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="FotoUrl" ColumnName="FotoUrl" />
+                <ScalarProperty Name="BilgiID" ColumnName="BilgiID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KullaniciYorum">
+            <EntityTypeMapping TypeName="TatilBlogModel.KullaniciYorum">
+              <MappingFragment StoreEntitySet="KullaniciYorum">
+                <ScalarProperty Name="YorumTarih" ColumnName="YorumTarih" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="KullaniciYaziID" ColumnName="KullaniciYaziID" />
+                <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="KullaniciYorumID" ColumnName="KullaniciYorumID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bulten">
+            <EntityTypeMapping TypeName="TatilBlogModel.Bulten">
+              <MappingFragment StoreEntitySet="Bulten">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MailID" ColumnName="MailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

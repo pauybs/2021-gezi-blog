@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container my-4">
+
+
+
+    <div class="card shadow-lg">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                @if (TempData["ok"] != null)
+                {
+                    <div class="alert alert-success mt-4 mb-0 pb-0">
+                        <h5 class="text-center ">@TempData["ok"] giriş yapabilirsiniz.</h5>
+                    </div>
+                }
+
+                @{
+                    if (TempData["uyesifre"] != null)
+                    {
+                        <div class="alert alert-warning text-center">
+                            @TempData["uyesifre"]
+                        </div>
+                    }
+                }
+
+                @if (ViewBag.mesaj != null)
+                {
+                    <div class="alert alert-danger mt-4 mb-0 pb-0">
+                        <h5 class="text-center ">@ViewBag.mesaj</h5>
+                        <p class="text-center">Şifremi unuttum kısmına tıklayarak şifrenizi öğrenebilirsiniz.</p>
+                    </div>
+                }
+                <div class="card-body login-card-body">
+                    <h3 class="login-box-msg">Oturum Aç</h3>
+
+                    @using (Html.BeginForm("Index", "UyeLogin", FormMethod.Post))
+                    {
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email" name="UyeMail">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-envelope"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="password" class="form-control" placeholder="Şifre" name="UyeSifre">
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <span class="fas fa-lock"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8">
+                                <div class="icheck-primary">
+                                    <input type="checkbox" id="remember">
+                                    <label for="remember">
+                                        Beni Hatırla
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="social-auth-links text-center mb-3">
+                            <button class="btn btn-block btn-primary">Giriş Yap</button>
+                        </div>
+                    }
+
+                    <div class="social-auth-links text-center mb-3">
+                        <a href="/UyeLogin/UyeKayit" class="btn btn-block btn-danger">
+                            Kayıt Ol
+                        </a>
+                    </div>
+                    <!-- /.social-auth-links -->
+
+                    <p class="mb-1">
+                        <button type="button" class="btn btn-sm hover" data-toggle="modal" data-target="#exampleModal" data-whatever="">Şifremi Unuttum</button>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+</div>
+</div>
+
+@Html.Action("SifremiUnuttum","UyeLogin")

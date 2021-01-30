@@ -1,0 +1,62 @@
+﻿@model TezProje.Models.Siniflar.Harita
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+@if (TempData["harita"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'Harita başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+
+<style>
+    .map-responsive {
+        overflow: hidden;
+        padding-bottom: 50%;
+        position: relative;
+        height: 0;
+    }
+
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+</style>
+
+<h2 class="my-2">Hatira Ekleme</h2>
+
+<hr>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.HaritaID)
+        @Html.LabelFor(x => x.Frame)
+        @Html.TextBoxFor(x => x.Frame, new { @Class = "form-control", @Onfocus = "this.value=''" })
+
+    </div>
+    <button class="btn btn-primary btn-block btn-lg ">Ekle</button>
+}
+
+<div class="container mt-3">
+    <h5 class="text-center text-danger">@ViewBag.mesaj</h5>
+    <div class="map-responsive">
+        @Html.Action("Harita", "Iletisim")
+    </div>
+
+
+</div>

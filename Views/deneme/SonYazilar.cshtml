@@ -1,0 +1,8 @@
+﻿@using TezProje.Models.Siniflar
+@model List<TezProje.Models.Siniflar.KullaniciYazi>
+
+@foreach (var x in Model)
+{
+    <p><a href="/uye-yazilari/@Url.FriendlyUrl(x.YaziBaslik)/@x.YaziID"><i class="fa fa-angle-double-right" aria-hidden="true"></i>@x.YaziBaslik</a></p>
+}
+

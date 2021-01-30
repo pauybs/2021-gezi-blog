@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Bilgilendirme";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+@if (TempData["baslik"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'Başlık başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+@if (TempData["bilgiicerik"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'İçerik başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+
+<h2 class="my-3">Bilgilendirme</h2>
+<div class="mb-3 text-center">
+    @Html.Action("BilgilendirmeBaslikAdmin", "Admin")
+</div>
+
+<table class="table table-bordered  table-responsive-sm table-responsive-md">
+    @Html.Action("BilgilendirmeAdmin", "Admin")
+</table>
+
+<div class="card shadow-lg">
+    @Html.Action("Bilgilendirme", "Default")
+</div>
+

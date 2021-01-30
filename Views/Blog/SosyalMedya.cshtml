@@ -1,0 +1,11 @@
+﻿@model List<TezProje.Models.Siniflar.İletisim>
+
+@foreach (var x in Model)
+{
+    <ul class="list-inline text-small mb-0">
+        <li class="list-inline-item"><a class="reset-anchor" href="@x.AdSoyad"><i class="fab fa-facebook-f"></i></a></li>
+        <li class="list-inline-item"><a class="reset-anchor" href="@x.Mail"><i class="fab fa-twitter"></i></a></li>
+        <li class="list-inline-item"><a class="reset-anchor" href="@x.Konu"><i class="fab fa-instagram"></i></a></li>
+
+    </ul>
+}

@@ -1,0 +1,333 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+
+
+    <link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Content/package/dist/sweetalert2.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    @if (TempData["yazisil"] != null)
+    {
+
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Yazı başarıyla silindi!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+    
+    @if (TempData["yaziguncelle"] != null)
+    {
+
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Yazı başarıyla güncellendi!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    } 
+    
+    @if (TempData["ayar"] != null)
+    {
+
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Ayarlar başarıyla güncellendi!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        </script>
+    }
+
+</head>
+
+
+
+<body class="hold-transition sidebar-mini">
+
+
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+
+        <section class="content-header">
+
+            <div class="container-fluid">
+
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+
+                        <h1>Profilim</h1>
+
+                    </div>
+
+
+
+                </div>
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- Main content -->
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-3">
+
+                        <!-- Profile Image -->
+
+                        <div class="card card-primary card-outline">
+
+                            <div class="card-body box-profile">
+
+                                <div class="text-center">
+
+                                    <img class="profile-user-img img-fluid img-circle"
+                                         src="@(ViewBag.foto ?? "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png")"
+                                         alt="User profile picture">
+
+                                </div>
+
+
+                                <h3 class="profile-username text-center">@ViewBag.ad</h3>
+
+                                <p class="text-muted text-center">@ViewBag.mail</p>
+
+
+
+                                <ul class="list-group list-group-unbordered mb-3">
+
+                                    <li class="list-group-item">
+
+                                        <b>Üyelik Tarihi</b> <a class="float-right">
+                                            @try
+                                            {
+                                                ViewBag.tarih = ((DateTime)ViewBag.tarih).ToString().AsDateTime().ToString("dd/MM/yyyy");
+                                            }
+                                            catch (Exception)
+                                            {
+                                                ViewBag.tarih = ((string)ViewBag.tarih).AsDateTime().ToString("dd/MM/yyyy");
+
+
+                                            }
+                                            @ViewBag.tarih
+                                        </a>
+
+                                    </li>
+
+                                    @*https://localhost:44365/AdminLTE-3.0.4/dist/img/user8-128x128.jpg*@
+
+                                    <li class="list-group-item">
+
+                                        <b>Toplam İçerik</b> <a class="float-right">@ViewBag.toplamIcerik</a>
+
+                                    </li>
+
+                                </ul>
+
+                                @*<a href="#timeline" data-toggle="tab" class="btn btn-primary btn-block"><b>Yeni İçerik Gir</b></a>*@
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+                        <!-- About Me Box -->
+
+                        <div class="card card-primary">
+
+                            <div class="card-header">
+
+                                <h3 class="card-title">Hakkımda</h3>
+
+                            </div>
+
+                            <!-- /.card-header -->
+
+
+
+                            <div class="card-body">
+
+                                <strong><i class="fas fa-book mr-1"></i> Ben Kimim</strong>
+
+                                <p class="text-muted">
+
+                                    @ViewBag.hakkimda
+
+                                </p>
+
+                                <hr>
+
+                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Şehir</strong>
+
+                                <p class="text-muted mb-0">@ViewBag.sehir</p>
+
+                            </div>
+
+                            <!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.card -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                    <div class="col-md-9">
+
+                        <div class="card">
+
+                            <div class="card-header p-2">
+
+                                <ul class="nav nav-pills">
+
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Yazılarım</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="/UyeAdmin/UyeYeniYazi">Yeni Yazı</a></li>
+
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ayarlar</a></li>
+
+                                </ul>
+
+                            </div><!-- /.card-header -->
+
+                            <div class="card-body">
+
+                                <div class="tab-content">
+
+                                    <div class="active tab-pane" id="activity">
+
+                                        @Html.Action("UyeYaziPartial", "UyeAdmin")
+                                        <!-- /.post -->
+                                        <!-- Post -->
+                                        <!-- /.post -->
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="timeline">
+
+                                        <!-- The timeline -->
+                                        @*@Html.Action("Partial2", "CariPanel")*@
+
+                                        @*@Html.Action("uyeYeniYaziPartial","UyeAdmin")*@
+
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                    <div class="tab-pane" id="settings">
+
+                                        @*@Html.Action("Partial1", "CariPanel")*@
+                                        @Html.Action("UyeAyarPartial", "UyeAdmin")
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+
+                                </div>
+
+                                <!-- /.tab-content -->
+
+                            </div><!-- /.card-body -->
+
+                        </div>
+
+                        <!-- /.nav-tabs-custom -->
+
+                    </div>
+
+                    <!-- /.col -->
+
+                </div>
+
+                <!-- /.row -->
+
+            </div><!-- /.container-fluid -->
+
+        </section>
+
+        <!-- /.content -->
+
+    </div>
+
+    <!-- /.content-wrapper -->
+    <!-- Control Sidebar -->
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <!-- AdminLTE for demo purposes -->
+
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+﻿@model TezProje.Models.Siniflar.İletisim
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<html>
+<head>
+    <title>Personal Blog a Blogging Category Flat Bootstarp  Responsive Website Template | Contact :: w3layouts</title>
+    @*<link href="~/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />*@
+    <link href="~/Content/iletisim.css" rel="stylesheet" />
+   
+  
+</head>
+<body>
+    
+    <div class="contact-content">
+        <div class="container">
+            <div class="contact-info">
+                <h2 class="my-2">İletişim</h2>
+                <p>Aşağdaki form ile benimle iletişime geçebilirsiniz!.</p>
+            </div>
+            <div class="contact-details">
+              
+
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    @Html.TextBoxFor(x => x.AdSoyad, new { @required = "required", placeholder = "Ad Soyad",pattern=".{1,75}", title="Lütfen 75 karakterden fazla girmeyiniz."})
+                    @Html.TextBoxFor(x => x.Mail, new { @required = "required", placeholder = "Mail", type = "email", pattern = ".{1,75}", title = "Lütfen 75 karakterden fazla girmeyiniz." })
+                    @Html.TextBoxFor(x => x.Konu, new { @required = "required", placeholder = "Konu" })
+                    @Html.TextAreaFor(x => x.Mesaj, new { @required = "required", placeholder = "Mesaj" })
+                    <input type="submit" value="Gönder" />
+
+                }
+
+
+            </div>
+            <div class="contact-details">
+                <div class="col-md-12 contact-map">
+                    <h4>Şu anda neredeyim?</h4>
+                    @*<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=29.322938919067386%2C40.75842791308544%2C29.433317184448246%2C40.80177816072151&amp;layer=mapnik&amp;marker=40.780106573336575%2C29.378128051757812" style="border: 1px solid black"></iframe>*@<!--<br /><small><a href="https://www.openstreetmap.org/?mlat=40.7801&amp;mlon=29.3781#map=14/40.7801/29.3781">Daha Büyük Haritayı Göster</a></small>-->
+                    @Html.Action("Harita", "Iletisim")
+                    @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6717.15049657893!2d29.119968755457183!3d37.92421141682881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x40305ff41bf675f8!2sPamukkale%20Travertenleri!5e0!3m2!1str!2str!4v1607460708324!5m2!1str!2str" width="1024" height="480" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>*@
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+
+
+        </div>
+    </div>
+    </div>
+    <!---->
+</body>
+</html>
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+@if (TempData["iletisim"] != null)
+{
+
+    <script>
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            text: 'Mesajınız alınmıştır. En kısa sürede dönüş yapacağız!',
+            showConfirmButton: false,
+            timer: 2000
+        })
+    </script>
+}
+
+
+
+
+

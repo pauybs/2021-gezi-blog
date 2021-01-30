@@ -1,0 +1,62 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Blog>
+<div class="col-lg-3 my-4 ">
+    <!-- About me widget -->
+    <div class="sticky-top " style="z-index:0;">
+
+        <div class="row  card p-4 shadow ">
+
+            <div class="mb-5 text-center mt-0 mt-md-5">
+                @Html.Action("SideBarHakkimda","Blog")
+                
+                @Html.Action("SosyalMedya","Blog")
+            </div>
+            <!-- Categories widget -->
+            <!-- Latest posts widget -->
+            <div class="mb-3">
+                <h3 class="h5 my-3">Rastgele İçerik</h3>
+                @*<p class="text-small text-muted mb-4">Lorem ipsum dolor sit, consectetur adipisicing elit, sed do eiusmod.</p>*@
+                <ul class="list-unstyled">
+                    @foreach (var x in Model)
+                    {
+                        string metin = System.Text.RegularExpressions.Regex.Replace(x.Aciklama, @"<[^>]+>|&nbsp;", " ").Trim();
+                        <li class="media mb-1">
+                            <a href="/Blog/BlogDetay/@x.BlogID"><img src="@x.BlogResim" alt="@x.BlogResim" width="80"></a>
+                            <div class="media-body ml-3">
+                                <p class="small text-gray text-uppercase mb-0">@x.Tarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</p>
+                                <h6 class="mb-1"><a class="reset-anchor" href="/Blog/BlogDetay/@x.BlogID">@x.Baslik</a></h6>
+                                <p class="small text-muted">@metin.Substring(0, 70)</p>
+                            </div>
+                        </li>
+                    }
+                    @*<li class="media mb-1">
+                            <a href="post.html"><img src="~/Content/images/DSCF5287.jpg" alt="" width="80"></a>
+                            <div class="media-body ml-3">
+                                <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                                <h6 class="mb-1"><a class="reset-anchor" href="post.html">MÜNİH GEZİ REHBERİ</a></h6>
+                                <p class="small text-muted">Bir zamanlar Umut Sarıkaya’nın da dediği gibi; “Almanlıktan aldığım tadı hiçbir şeyden almadım.” Evet çok doğru, aynen öyle. Ich liebe dich be Almanya.</p>
+                            </div>
+                        </li>
+                        <li class="media">
+                            <a href="post.html"><img src="~/Content/images/Eiffel-Kulesi-Paris-2.jpg" alt="" width="80"></a>
+                            <div class="media-body ml-3">
+                                <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                                <h6 class="mb-1"><a class="reset-anchor" href="post.html">PARİS YEME İÇME REHBERİ</a></h6>
+                                <p class="small text-muted mb-0">Paris sokaklarında dolanırken kendimizi gerçekten “e be köylü kızı” diye sinirlenip duran Memoli gibi hissettik.</p>
+                            </div>
+                        </li>*@
+                </ul>
+            </div>
+
+
+            <div class="px-4 py-5 bg-light mb-3 text-center">
+                <h3 class="h5"><i class="far fa-envelope mr-2"></i>E-Posta Bülteni</h3>
+                <p class="text-small text-muted">E-Posta bültenimize abone olarak paylaşılan içeriklerden anında haberdar olabilirsiniz!</p>
+                @Html.Action("Email","Blog")
+            </div>
+
+
+            @Html.Action("Galeri", "Blog")
+        </div>
+    </div>
+</div>

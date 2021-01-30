@@ -1,0 +1,61 @@
+﻿@model TezProje.Models.Siniflar.KullaniciYazi
+
+
+
+@using (Html.BeginForm("UyeYaziEkle", "UyeAdmin", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.LabelFor(x => x.YaziBaslik)
+    @Html.TextBoxFor(x => x.YaziBaslik, new { @Class = "form-control", @required = "required" })
+    <br />
+
+    @Html.LabelFor(x => x.YaziAciklama)
+    @Html.TextAreaFor(x => x.YaziAciklama, new { @Class = "form-control summernote", id = "summernote" })
+    <span class="text-danger">@ViewBag.mesaj</span>
+    <br />
+
+    @Html.LabelFor(x => x.YaziResim)
+    @Html.TextBoxFor(x => x.YaziResim, new { @Class = "form-control" })
+    <br />
+
+    @Html.HiddenFor(x => x.YaziTarih, new { @Class = "form-control", @Value = DateTime.Now.ToShortDateString() })
+    @Html.HiddenFor(x => x.YaziDurum, new { @Class = "form-control", @Value = 0 })
+</div>
+
+    @*<div class="my-3">
+            <h3>Seo Ayarları</h3>
+            <hr />
+
+            @Html.LabelFor(x => x.TitleTag)
+            @Html.TextBoxFor(x => x.TitleTag, new { @Class = "form-control" })
+            <br />
+
+            @Html.LabelFor(x => x.DescriptonTag)
+            @Html.TextBoxFor(x => x.DescriptonTag, new { @Class = "form-control" })
+            <br />
+
+            @Html.LabelFor(x => x.ResimAltTag)
+            @Html.TextBoxFor(x => x.ResimAltTag, new { @Class = "form-control" })
+            <br />
+
+            @Html.LabelFor(x => x.YazarID)
+            @Html.TextBoxFor(x => x.YazarID, new { @Class = "form-control" })
+            <br />
+        </div>*@
+    <button class="btn btn-primary btn-block btn-lg ">Yayınla</button>
+}
+
+
+<script src="~/Scripts/jquery-3.4.1.slim.min.js"></script>
+<link href="~/summernote/summernote-lite.min.css" rel="stylesheet" />
+<script src="~/summernote/summernote-lite.min.js"></script>
+<script src="~/summernote/lang/summernote-tr-TR.min.js"></script>
+
+<script>
+    $('.summernote').summernote({
+            lang: 'tr-TR',
+            placeholder: 'Blog',
+            height: 200
+
+        });
+</script>

@@ -1,0 +1,435 @@
+﻿@using TezProje.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<İletisim>
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <!-- Tell the browser to be responsive to screen width -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Ionicons -->
+
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+    <!-- icheck bootstrap -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <!-- Theme style -->
+
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+
+    <!-- Google Font: Source Sans Pro -->
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+
+    @*@foreach (var x in ViewBag.dene)
+        {
+            <div>@x</div>
+        }*@
+    <!-- Navbar -->
+    <!-- /.navbar -->
+    <!-- Main Sidebar Container -->
+    <!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+
+        <div class="container-fluid">
+
+            <div class="row mb-2">
+
+                <div class="col-sm-6">
+
+                    <h1>Mesaj Kutusu</h1>
+
+                </div>
+
+                <div class="col-sm-6">
+
+
+
+                </div>
+
+            </div>
+
+        </div><!-- /.container-fluid -->
+
+    </section>
+
+    <!-- Main content -->
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-3">
+
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">Klasörler</h3>
+
+                        <div class="card-tools">
+
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+
+                                <i class="fas fa-minus"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card-body p-0">
+
+                        <ul class="nav nav-pills flex-column">
+
+                            <li class="nav-item active">
+
+                                <a href="/Admin/Mesajlar/" class="nav-link">
+
+                                    <i class="fas fa-inbox"></i> Gelen Kutusu
+
+                                    <span class="badge bg-primary float-right">@ViewBag.mesajSayi</span>
+
+                                </a>
+
+                            </li>
+
+
+
+
+
+
+                        </ul>
+
+                    </div>
+
+                    <!-- /.card-body -->
+
+                </div>
+
+                <!-- /.card -->
+                <!-- /.card -->
+
+            </div>
+
+            <!-- /.col -->
+
+            <div class="col-md-9">
+
+                <div class="card card-primary card-outline">
+
+                    <div class="card-header">
+
+                        <h3 class="card-title">Gelen Kutusu</h3>
+
+                        <div class="card-tools">
+                            @using (Html.BeginForm("Mesajlar", "Admin", FormMethod.Get))
+                            {
+                                <div class="input-group input-group-sm">
+
+                                    @*<input type="text" class="form-control" name="" placeholder="Mail Ara">*@
+                                    @Html.TextBox("p", "", new { @class = "form-control", placeholder = "Mail Ara" })
+
+                                    <div class="input-group-append">
+
+                                        <button class="btn btn-primary">
+
+                                            <i class="fas fa-search"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+                            }
+
+
+                        </div>
+
+                        <!-- /.card-tools -->
+
+                    </div>
+
+                    <!-- /.card-header -->
+
+                    <div class="card-body p-0">
+
+                        <div class="mailbox-controls">
+
+
+                            <div class="table-responsive mailbox-messages">
+
+                                <table class="table table-hover table-striped ">
+
+                                    <tbody>
+
+                                        @if (Model.Count() == 0)
+                                        {
+                                            <tr>
+                                                <td class="mailbox-subject ">
+
+                                                    <b class="text-danger">Aradığınız mail bulunamamıştır.</b>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+
+                                            foreach (var x in Model)
+                                            {
+
+                                                <tr>
+
+                                                    @*<td>
+
+                                                            <div class="icheck-primary">
+
+                                                                <input type="checkbox" value="" id="check1">
+
+                                                                <label for="check1"></label>
+
+                                                            </div>
+
+                                                        </td>*@
+
+                                                    <td class="mailbox-star"><a href="#"></a></td>
+
+                                                    <td class="mailbox-name"><a href="/Admin/MesajDetay/@x.İletisimID">@x.Mail</a></td>
+
+                                                    <td class="mailbox-subject">
+
+
+                                                        <b>Konu</b>  - <span> @x.Konu</span>
+
+
+
+                                                    </td>
+
+                                                    <td class="mailbox-attachment"></td>
+
+                                                    <td class="mailbox-date">@x.AdSoyad</td>
+
+                                                </tr>
+                                            }
+
+
+                                        }
+
+
+
+
+                                    </tbody>
+
+                                </table>
+
+                                <!-- /.table -->
+
+                            </div>
+
+                            <!-- /.mail-box-messages -->
+
+                        </div>
+
+                        <!-- /.card-body -->
+
+                        <div class="card-footer p-0">
+
+                            <div class="mailbox-controls">
+
+
+                                <!-- /.btn-group -->
+
+                                <a href="/Admin/Mesajlar/" class="btn btn-default btn-sm"> <i class="fas fa-sync-alt"></i></a>
+
+                                <div class="float-right">
+
+                                    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Mesajlar", new { sayfa = sayfa }),
+                new PagedListRenderOptions
+                {
+
+                    LiElementClasses = new List<string>
+
+                    {"page-link page-item"}
+
+                })
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+    </section>
+
+
+
+
+
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/AdminLTE-3.0.4/ist/js/adminlte.min.js"></script>
+
+    <!-- Page Script -->
+
+    <script>
+        $(function () {
+
+            //Enable check and uncheck all functionality
+
+            $('.checkbox-toggle').click(function () {
+
+                var clicks = $(this).data('clicks')
+
+                if (clicks) {
+
+                    //Uncheck all checkboxes
+
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+
+                    $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+
+                } else {
+
+                    //Check all checkboxes
+
+                    $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+
+                    $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+
+                }
+
+                $(this).data('clicks', !clicks)
+
+            })
+
+
+
+            //Handle starring for glyphicon and font awesome
+
+            $('.mailbox-star').click(function (e) {
+
+                e.preventDefault()
+
+                //detect type
+
+                var $this = $(this).find('a > i')
+
+                var glyph = $this.hasClass('glyphicon')
+
+                var fa = $this.hasClass('fa')
+
+
+
+                //Switch states
+
+                if (glyph) {
+
+                    $this.toggleClass('glyphicon-star')
+
+                    $this.toggleClass('glyphicon-star-empty')
+
+                }
+
+
+
+                if (fa) {
+
+                    $this.toggleClass('fa-star')
+
+                    $this.toggleClass('fa-star-o')
+
+                }
+
+            })
+
+        })</script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+
+    @*@{int i = 0; }
+            @foreach (var x in Model)
+            {
+
+        <script>
+                    var str = $("#@i-a").val();
+                    var res = str.substring(0, 200);
+                    document.getElementById("@i-a").innerHTML = res;
+        </script>
+                i++;
+            }*@
+
+
+
+</body>
+
+</html>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $('.dataTable').dataTable({
+        "language": {
+            "url": "/Content/DataTables/Turkish.json"
+        }
+    });
+
+</script>

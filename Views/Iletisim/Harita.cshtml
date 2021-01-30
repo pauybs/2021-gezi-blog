@@ -1,0 +1,7 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Harita>
+
+@foreach (var x in Model)
+{
+    @Html.Raw(x.Frame)
+}

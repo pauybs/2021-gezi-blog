@@ -1,0 +1,32 @@
+﻿@model TezProje.Models.Siniflar.Basliklar
+
+@{
+    ViewBag.Title = "BaslikGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<h2 class="my-2 ">Başlık Güncelle</h2>
+<hr>
+
+@using (Html.BeginForm("BaslikGuncelle", "Admin", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.AnaBaslik)
+        @Html.TextBoxFor(x => x.AnaBaslik, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.LabelFor(x => x.AnaAciklama)
+        @Html.TextAreaFor(x => x.AnaAciklama, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.HiddenFor(x => x.BaslikID)
+    </div>
+
+
+    <button class="btn btn-success btn-block btn-lg ">Güncelle</button>
+}
+
+
+

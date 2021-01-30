@@ -1,0 +1,31 @@
+﻿@model TezProje.Models.Siniflar.İletisim
+@{
+    ViewBag.Title = "SideBarGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="my-2">SideBar Güncelle</h2>
+
+<hr>
+
+@using (Html.BeginForm("SideBarGuncelle", "Admin", FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.Label("Başlık")
+        @Html.TextBoxFor(x => x.AdSoyad, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.Label("Açıklama");
+        @Html.TextAreaFor(x => x.Konu, new { @Class = "form-control", @required = "required" })
+        <br />
+
+        @Html.Label("Fotoğraf")
+        @Html.TextBoxFor(x => x.Mesaj, new { @Class = "form-control", type="file", accept = "image/*" })
+        <br />
+
+        @Html.HiddenFor(x => x.İletisimID)
+    </div>
+
+
+    <button class="btn btn-success btn-block btn-lg ">Güncelle</button>
+}

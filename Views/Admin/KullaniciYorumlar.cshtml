@@ -1,0 +1,71 @@
+﻿@model List<TezProje.Models.Siniflar.KullaniciYorum>
+@{
+    ViewBag.Title = "KullaniciYorumlar";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+
+
+<h2 class="my-2">Üye İçerik Yorumları</h2>
+
+
+<table class="table table-bordered table-hover table-responsive-sm table-responsive-md my-3 dataTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Yazı</th>
+            <th>Ad</th>
+            <th>Mail</th>
+            <th>Yorum</th>
+            <th class="text-center">Yorumu Durumu</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+
+            <tr>
+                <td>@x.KullaniciYorumID</td>
+                <td>@x.KullaniciYazi.YaziBaslik</td>
+                <td>@x.Ad</td>
+                <td>@x.Mail</td>
+                <td>@x.Yorum</td>
+
+                <td class="text-center">
+                    @{
+                        if (x.Durum == true)
+                        {
+                            <a href="/Admin/KullaniciYorumOnayla/@x.KullaniciYorumID" class="btn btn-outline-danger">Yorumu Kaldır</a>
+                        }
+                        else
+                        {
+                            <a href="/Admin/KullaniciYorumOnayla/@x.KullaniciYorumID" class="btn btn-warning">Yorumu Onayla</a>
+                        }
+                    }
+
+                    @*<a href="/Admin/UyeBanla/@x.UyeID" class="btn btn-outline-danger">Üyeyi Banla</a>*@
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $('.dataTable').dataTable({
+        "language": {
+            "url": "/Content/DataTables/Turkish.json"
+        }
+    });
+
+</script>
+

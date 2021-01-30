@@ -1,0 +1,31 @@
+﻿@model TezProje.Models.Siniflar.İletisim
+@{
+    ViewBag.Title = "SosyalMedya";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="my-2">Sosyal Medya Hesapları</h2>
+
+<hr>
+
+@using (Html.BeginForm("SosyalMedyaGuncelle", "Admin", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Facebook")
+    @Html.TextBoxFor(x => x.AdSoyad, new { @Class = "form-control" })
+    <br />
+
+    @Html.Label("Twitter")
+    @Html.TextBoxFor(x => x.Mail, new { @Class = "form-control" })
+    <br />
+
+    @Html.Label("İnstagram")
+    @Html.TextBoxFor(x => x.Konu, new { @Class = "form-control" })
+    <br />
+
+    @Html.HiddenFor(x => x.İletisimID)
+</div>
+
+
+    <button class="btn btn-success btn-block btn-lg ">Güncelle</button>
+}

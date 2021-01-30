@@ -1,0 +1,600 @@
+﻿@using TezProje.Models.Siniflar
+@model List<KullaniciYazi>
+@{
+    ViewBag.Title = "DenemeDetay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @*<link href="~/Ask-Online-HTML-Forum-Template-master/css/bootstrap.css" rel="stylesheet" type="text/css">*@
+    <link href="~/Ask-Online-HTML-Forum-Template-master/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/Ask-Online-HTML-Forum-Template-master/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="~/Ask-Online-HTML-Forum-Template-master/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/formYorumDeneme.css" rel="stylesheet" />
+
+
+
+    <link rel="stylesheet" href="~/thumber/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery-ui.css">
+
+    <link rel="stylesheet" href="~/thumber/css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="~/thumber/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="~/thumber/css/aos.css">
+    <link rel="stylesheet" href="~/thumber/css/jquery.scrollbar.css">
+    <link rel="stylesheet" href="~/thumber/css/fancybox.min.css">
+    <link rel="stylesheet" href="~/thumber/css/swiper.min.css">
+
+    <link href="~/Content/galeriStyle.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
+    <section class="main-content920">
+        <div class="container-fluid">
+            <div class="row mx-lg-4">
+
+                <div class="col-lg-2 d-none d-lg-block my-4 ">
+                    <!-- About me widget -->
+                    <div class="sticky-top " style="z-index:0;">
+
+
+                        <div class="row  card p-4 shadow ">
+
+                            @foreach (var x in Model)
+                            {
+
+
+                                <div class="mb-5 text-center mt-0 mt-md-5">
+                                    @*<i class="fas fa-user-circle fa-4x"></i>*@
+                                    <img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="@(x.Uye1.UyeFoto ?? "/Ask-Online-HTML-Forum-Template-master/image/images.png") " alt="" width="110">
+
+                                    <h3 class="h4">@x.Uye1.UyeKullaniciAdi</h3>
+                                    <p class="text-small text-muted px-sm-4">@x.Uye1.UyeHakkimda</p><img class="d-block mx-auto mb-3" src="img/signature.png" alt="" width="60">
+                                    @*<ul class="list-inline text-small mb-0">
+                                            <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-instagram"></i></a></li>
+
+                                        </ul>*@
+                                </div>
+                            }
+                            <!-- Categories widget -->
+                            <!-- Latest posts widget -->
+                            @*<div class="mb-3">
+                                    <h3 class="h5">Rastgele İçerik</h3>
+                                    <p class="text-small text-muted mb-4">Lorem ipsum dolor sit, consectetur adipisicing elit, sed do eiusmod.</p>
+                                    <ul class="list-unstyled">
+                                        <li class="media mb-1">
+                                            <a href="post.html"><img src="//placehold.it/400x300/128/fff/?text=1" alt="" width="80"></a>
+                                            <div class="media-body ml-3">
+                                                <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                                                <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                                                <p class="small text-muted">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                                            </div>
+                                        </li>
+                                        <li class="media mb-1">
+                                            <a href="post.html"><img src="//placehold.it/400x300/4bcffa/fff/?text=2" alt="" width="80"></a>
+                                            <div class="media-body ml-3">
+                                                <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                                                <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                                                <p class="small text-muted">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                                            </div>
+                                        </li>
+                                        <li class="media">
+                                            <a href="post.html"><img src="//placehold.it/400x300/7fddf0/fff/?text=3" alt="" width="80"></a>
+                                            <div class="media-body ml-3">
+                                                <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                                                <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                                                <p class="small text-muted mb-0">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>*@
+
+                            <!-- Newsletter widget -->
+                            @*<div class="px-4 py-5 bg-light mb-3 text-center">
+                                    <h3 class="h5"><i class="far fa-envelope mr-2"></i>E-Posta Bülteni</h3>
+                                    <p class="text-small text-muted">E-Posta bültenimize abone olarak paylaşılan içeriklerden anında haberdar olabilirsiniz!</p>
+                                    <form action="#">
+                                        <div class="form-group mb-1">
+                                            <input class="form-control form-control-sm" type="email" name="email" placeholder="E-Mail...">
+                                        </div>
+                                        <div class="form-group mb-0">
+                                            <button class="btn btn-primary btn-block btn-sm" type="submit">Abone Ol</button>
+                                        </div>
+                                    </form>
+                                </div>*@
+
+
+
+                            @*<div class="site-wrap">
+
+                                    <div class="site-mobile-menu">
+                                        <div class="site-mobile-menu-header">
+                                            <div class="site-mobile-menu-close mt-3">
+                                                <span class="icon-close2 js-menu-toggle"></span>
+                                            </div>
+                                        </div>
+                                        <div class="site-mobile-menu-body"></div>
+                                    </div>
+
+
+
+
+                                    <main class="main-content ">
+                                        <header class="text-center mb-3">
+                                            <h3 class="h5">Mini Galeri</h3>
+                                        </header>
+                                        <div class="container photos">
+                                            <div class="row align-items-stretch">
+
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up">
+                                                    <a href="/thumber/images/img_1.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_1.jpg" alt="Image" class="img-fluid" style="height:200px" />
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="100">
+                                                    <a href="../thumber/images/img_2.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_2.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="200">
+                                                    <a href="images/img_3.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_3.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up">
+                                                    <a href="images/img_4.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_4.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="100">
+                                                    <a href="images/img_5.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_5.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="200">
+                                                    <a href="images/img_6.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                                        <img src="../thumber/images/img_6.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                                        <div class="photo-text-more">
+                                                            <span class="icon icon-search"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </main>
+
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 py-4">
+                    @foreach (var x in Model)
+                    {
+
+
+                        <div class="post-details mt-0 p-4">
+                            <div class="details-header923">
+                                <div class="row">
+
+                                    <div class="col-md-8">
+                                        <div class="post-title-left129">
+                                            <h3>@x.YaziBaslik</h3>
+                                        </div>
+                                    </div>
+                                    @*<div class="col-md-4">
+                                            <div class="post-que-rep-rihght320"> <a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i> Question</a> <a href="#" class="r-clor10">Report</a> </div>
+                                        </div>*@
+                                </div>
+                            </div>
+                            <div class="post-details-info1982">
+                                <div class="row justify-content-center mt-2 mb-4 p-0">
+                                    @*<img src="~/distribution/img/instagram-1.jpg" class="img-fluid" />*@
+                                    <div class="col-12 col-md-8 col-lg-12">
+                                        <div class="row justify-content-center">
+                                            <img src="@x.YaziResim" class="img-fluid" alt="@x.YaziResimAltTag" />
+                                        </div>
+                                        
+                                    </div>
+                                   
+                                </div>
+                                <div class="">
+                                    <p>@Html.Raw(x.YaziAciklama)</p>
+                                </div>
+                                
+                                @*<p>Supreme Roastworks: Oslo’nun Hipsterland’i Grünerløkka bölgesindeki bir diğer favorimiz bu kahveci. Kendisi Tim Wendelboe ile kapışacak kadar çok seviliyor ve bizce bu iddialar kesinlikle mantıksız değil. Eğer daha uzun soluklu oturmak istiyorsanız bu açıdan da Tim Wendelboe’ya kıyasla daha rahat bir seçenek, eğer aceleniz yoksa buranın kahvelerini de denemeniz önerimizdir. Evinize buradan kahve de alabilirsiniz bu arada. </p>*@
+                                <hr>
+                                <div class="post-footer29032">
+                                    <div class="l-side2023">
+                                        @*<a href="#"><i class="fa fa-star" aria-hidden="true">  5</i></a>
+        <a href="#"><i class="fa fa-star" aria-hidden="true">  5</i></a>
+        <a href="#"><i class="fa fa-star" aria-hidden="true">  5</i></a>
+        <a href="#"><i class="fa fa-star" aria-hidden="true">  5</i></a>
+        <a href="#"><i class="fa fa-star" aria-hidden="true">  5</i></a>*@
+                                        @*<i class="fa fa-folder folder2" aria-hidden="true"> deneme</i>*@
+                                        <i class="fa fa-clock-o clock2" aria-hidden="true">@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</i>
+                                        @{
+                                            if (ViewBag.yorumSayi == null)
+                                            {
+                                                <a href="#"><i class="fa fa-commenting commenting2" aria-hidden="true"> 0 Yorum </i></a>
+                                            }
+                                            else
+                                            {
+                                                <a href="#"><i class="fa fa-commenting commenting2" aria-hidden="true"> @ViewBag.yorumSayi Yorum </i></a>
+                                            }
+                                        }
+
+                                    </div>
+                                    @*<div class="l-rightside39">
+                                            <button type="button" class="tolltip-button thumbs-up2" data-toggle="tooltip" data-placement="bottom" title="Like"><i class="fa fa-thumbs-o-up " aria-hidden="true"></i></button>
+                                            <button type="button" class="tolltip-button  thumbs-down2" data-toggle="tooltip" data-placement="bottom" title="Dislike"><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></button> <span class="single-question-vote-result">+22</span>
+                                        </div>*@
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @*<div class="share-tags-page-content12092">
+                            <div class="l-share2093"> <i class="fa fa-share" aria-hidden="true"> Share</i> </div>
+                            <div class="R-tags309"> <i class="fa fa-tags" aria-hidden="true"> Wordpress, Question, Developer</i> </div>
+                        </div>*@
+                    @*<div class="author-details8392">
+                            <div class="author-img202l">
+                                <img src="image/images.png" alt="image">
+                                <div class="au-image-overlay text-center"> <a href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i></a> </div>
+                            </div> <span class="author-deatila04re">
+                                <h5>About the Author</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra auctor neque. Nullam lobortis, sapien vitae lobortis tristique.</p>
+
+                            </span>
+                        </div>*@
+                    <div class="related3948-question-part">
+                        <h3>Son Yazılar</h3>
+                        <hr>
+                        @Html.Action("SonYazilar","Deneme")
+                    </div>
+                    <!--<div class="comment-list12993">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="comments-container">
+                                <ul id="comments-list" class="comments-list">
+                                    <li>
+                                        <div class="comment-main-level">-->
+                    <!-- Avatar -->
+                    <!--<div class="comment-avatar"><img src="image/images.png" alt=""></div>-->
+                    <!-- Contenedor del Comentario -->
+                    <!--<div class="comment-box col-4 col-md-12">
+                                <div class="comment-head">
+                                    <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span><i class="fa fa-clock-o" aria-hidden="true"> January 15 , 2014 at 10:00 pm</i></span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+                                </div>
+                                <div class="comment-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </div>
+                            </div>
+                        </div>
+
+
+                        <ul class="comments-list reply-list">
+                            <li>
+                                <div class="comment-avatar"><img src="image/images.png" alt=""></div>
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span><i class="fa fa-clock-o" aria-hidden="true"> January 15 , 2014 at 10:00 pm</i></span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="comment-avatar"><img src="image/images.png" alt=""></div>
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name by-author"><a href="#">Agustin Ortiz</a></h6> <span><i class="fa fa-clock-o" aria-hidden="true"> January 15 , 2014 at 10:00 pm</i></span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="comment-avatar"><img src="image/images.png" alt=""></div>
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span><i class="fa fa-clock-o" aria-hidden="true"> January 15 , 2014 at 10:00 pm</i></span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+                                    </div>
+                                    <div class="comment-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="comment-main-level">-->
+                    <!-- Avatar -->
+                    <!--<div class="comment-avatar"><img src="image/images.png" alt=""></div>-->
+                    <!-- Contenedor del Comentario -->
+                    <!--<div class="comment-box">
+                                                    <div class="comment-head">
+                                                        <h6 class="comment-name"><a href="#">Lorena Rojero</a></h6> <span><i class="fa fa-clock-o" aria-hidden="true"> January 15 , 2014 at 10:00 pm</i></span> <i class="fa fa-reply"></i> <i class="fa fa-heart"></i>
+                                                    </div>
+                                                    <div class="comment-content"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo? </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
+                    <div class="related3948-question-part">
+                        @Html.Action("YorumListele", "deneme")
+
+
+
+                        @Html.Action("DenemeYorum", "deneme")
+                    </div>
+
+
+                    @*<div class="comment289-box">
+                            <h3>Leave A Reply</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="replay-input-name42389">
+                                        <p>Name*</p>
+                                        <input type="text" class="name-box24894 input238-design" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="replay-email-input89298">
+                                        <p>E-mail*</p>
+                                        <input type="text" class="name-box24894 input238-design" placeholder="E-mail">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="replay-input-websit128923">
+                                        <p>Website*</p>
+                                        <input type="text" class="name-box24894 input238-design" placeholder="Website">
+                                    </div>
+                                </div>
+                                <div class="post9320-box">
+                                    <input type="text" class="comment-input219882" placeholder="Enter Your Post">
+                                </div>
+                                <button type="button" class="pos393-submit">Post Your Answer</button>
+                            </div>
+                        </div>*@
+                </div>
+                <!--                end of col-md-9 -->
+                <!--           strart col-md-3 (side bar)-->
+
+                <div class="col-lg-2 d-block d-lg-none my-0 ">
+                    <!-- About me widget -->
+                    <div class="sticky-top " style="z-index:0;">
+
+
+                        <div class="row  card p-4 shadow ">
+
+                            @foreach (var x in Model)
+                            {
+                                <div class="mb-5 text-center mt-0 mt-md-5">
+                                    @*<i class="fas fa-user-circle fa-4x"></i>*@
+                                    <img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="@(x.Uye1.UyeFoto ?? "/Ask-Online-HTML-Forum-Template-master/image/images.png") " alt="" width="110">
+
+                                    <h3 class="h4">@x.Uye1.UyeKullaniciAdi</h3>
+                                    <p class="text-small text-muted px-sm-4">@x.Uye1.UyeHakkimda</p><img class="d-block mx-auto mb-3" src="img/signature.png" alt="" width="60">
+                                    @*<ul class="list-inline text-small mb-0">
+                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-instagram"></i></a></li>
+
+                </ul>*@
+                                </div>
+                            }
+                            <!--<div class="mb-5 text-center mt-0 mt-md-5">-->
+                                @*<i class="fas fa-user-circle fa-4x"></i>*@
+                                <!--<img class="mb-3 rounded-circle img-thumbnail shadow-sm" src="~/Ask-Online-HTML-Forum-Template-master/image/images.png" alt="" width="110">
+
+                                <h3 class="h4">Ben Kimim?</h3>
+                                <p class="text-small text-muted px-sm-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p><img class="d-block mx-auto mb-3" src="img/signature.png" alt="" width="60">
+                                <ul class="list-inline text-small mb-0">
+                                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a class="reset-anchor" href="#"><i class="fab fa-instagram"></i></a></li>
+
+                                </ul>
+                            </div>-->
+                            <!-- Categories widget -->
+                            <!-- Latest posts widget -->
+                            @*<div class="mb-3">
+            <h3 class="h5">Rastgele İçerik</h3>
+            <p class="text-small text-muted mb-4">Lorem ipsum dolor sit, consectetur adipisicing elit, sed do eiusmod.</p>
+            <ul class="list-unstyled">
+                <li class="media mb-1">
+                    <a href="post.html"><img src="//placehold.it/400x300/128/fff/?text=1" alt="" width="80"></a>
+                    <div class="media-body ml-3">
+                        <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                        <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                        <p class="small text-muted">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                    </div>
+                </li>
+                <li class="media mb-1">
+                    <a href="post.html"><img src="//placehold.it/400x300/4bcffa/fff/?text=2" alt="" width="80"></a>
+                    <div class="media-body ml-3">
+                        <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                        <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                        <p class="small text-muted">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                    </div>
+                </li>
+                <li class="media">
+                    <a href="post.html"><img src="//placehold.it/400x300/7fddf0/fff/?text=3" alt="" width="80"></a>
+                    <div class="media-body ml-3">
+                        <p class="small text-primary text-uppercase mb-0">26.11.2020</p>
+                        <h6 class="mb-1"><a class="reset-anchor" href="post.html">Lorem ipsum dolor sit</a></h6>
+                        <p class="small text-muted mb-0">Lorem ipsum dolor sit, consectetur adipisicing elit, sed.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>*@
+
+                            <!-- Newsletter widget -->
+                            @*<div class="px-4 py-5 bg-light mb-3 text-center">
+            <h3 class="h5"><i class="far fa-envelope mr-2"></i>E-Posta Bülteni</h3>
+            <p class="text-small text-muted">E-Posta bültenimize abone olarak paylaşılan içeriklerden anında haberdar olabilirsiniz!</p>
+            <form action="#">
+                <div class="form-group mb-1">
+                    <input class="form-control form-control-sm" type="email" name="email" placeholder="E-Mail...">
+                </div>
+                <div class="form-group mb-0">
+                    <button class="btn btn-primary btn-block btn-sm" type="submit">Abone Ol</button>
+                </div>
+            </form>
+        </div>*@
+
+
+
+                            @*<div class="site-wrap">
+
+            <div class="site-mobile-menu">
+                <div class="site-mobile-menu-header">
+                    <div class="site-mobile-menu-close mt-3">
+                        <span class="icon-close2 js-menu-toggle"></span>
+                    </div>
+                </div>
+                <div class="site-mobile-menu-body"></div>
+            </div>
+
+
+
+
+            <main class="main-content ">
+                <header class="text-center mb-3">
+                    <h3 class="h5">Mini Galeri</h3>
+                </header>
+                <div class="container photos">
+                    <div class="row align-items-stretch">
+
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up">
+                            <a href="/thumber/images/img_1.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_1.jpg" alt="Image" class="img-fluid" style="height:200px" />
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="100">
+                            <a href="../thumber/images/img_2.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_2.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="200">
+                            <a href="images/img_3.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_3.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up">
+                            <a href="images/img_4.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_4.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="100">
+                            <a href="images/img_5.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_5.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-6 col-md-6 col-lg-6 my-2" data-aos="fade-up" data-aos-delay="200">
+                            <a href="images/img_6.jpg" class="d-block photo-item" data-fancybox="gallery" style="height:200px">
+                                <img src="../thumber/images/img_6.jpg" alt="Image" class="img-fluid" style="height:200px">
+                                <div class="photo-text-more">
+                                    <span class="icon icon-search"></span>
+                                </div>
+                            </a>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </main>
+
+        </div>*@
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Action("Sidebar", "deneme")
+
+
+            </div>
+        </div>
+    </section>
+    <!--    footer -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="~/Ask-Online-HTML-Forum-Template-master/js/jquery-3.1.1.min.js"></script>
+    <script src="~/Ask-Online-HTML-Forum-Template-master/js/bootstrap.min.js"></script>
+    <script src="~/Ask-Online-HTML-Forum-Template-master/js/npm.js"></script>
+
+    <link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+    <script src="~/Content/package/dist/sweetalert2.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    @if (TempData["denemeyorum"] != null)
+    {
+
+        <script>
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                text: 'Yorumunuz yönetici tarafından onaylandıktan sonra yayınlanacaktır.',
+                showConfirmButton: false,
+                timer: 2500
+            })
+        </script>
+    }
+
+</body>
+
+</html>
+

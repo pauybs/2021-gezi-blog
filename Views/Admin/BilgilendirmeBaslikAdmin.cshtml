@@ -1,0 +1,13 @@
+﻿@model List<TezProje.Models.Siniflar.Basliklar>
+
+<div class="card">
+    @foreach (var x in Model)
+    {
+        <h5 class="card-header bg-secondary text-white">Ana Başlık ve Açıklama</h5>
+        <div class="card-body">
+            <h5 class="card-title">@x.AnaBaslik</h5>
+            <p class="card-text">@x.AnaAciklama</p>
+            <a href="/Admin/BaslikGetir/@x.BaslikID/" class="btn btn-success">Güncelle</a>
+        </div>
+    }
+</div>

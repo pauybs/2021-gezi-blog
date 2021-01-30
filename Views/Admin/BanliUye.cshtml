@@ -1,0 +1,53 @@
+﻿@using TezProje.Models.Siniflar
+@model List<Uye>
+@{
+    ViewBag.Title = "BanliUye";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2 class="my-2">Banlı Üyeler</h2>
+
+
+<table class="table table-bordered table-hover table-responsive-sm table-responsive-md my-3 dataTable">
+    <thead>
+        <tr>
+            <th>Uye ID</th>
+            <th>Kullanıcı Adı</th>
+            <th>Mail</th>
+            <th class="text-center">Üyeyi Sil</th>
+            <th class="text-center">Üye Paylaşımları</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+
+            <tr>
+                <td>@x.UyeID</td>
+                <td>@x.UyeKullaniciAdi</td>
+                <td><a href="mailto:@x.UyeMail">@x.UyeMail</a></td>
+
+                <td class="text-center"><a href="/Admin/UyeBanla/@x.UyeID" class="btn btn-outline-success">Üye Banı Aç</a></td>
+                <td class="text-center"><a href="/Admin/UyeDetay/@x.UyeID" class="btn btn-outline-primary">Paylaşımlar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Admin/BanliUye/" class="btn btn-danger">Banlı Üyeler</a>
+<link href="~/Content/DataTables/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script src="~/Scripts/DataTables/dataTables.bootstrap4.min.js"></script>
+
+<script>
+
+    $('.dataTable').dataTable({
+        "language": {
+            "url": "/Content/DataTables/Turkish.json"
+        }
+    });
+
+</script>

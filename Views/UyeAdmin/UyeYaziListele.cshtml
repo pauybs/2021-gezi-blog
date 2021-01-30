@@ -1,0 +1,33 @@
+﻿@using TezProje.Models.Siniflar
+@model List<KullaniciYazi>
+@{
+    ViewBag.Title = "UyeYaziListele";
+    Layout = "~/Views/Shared/_UyeLayout.cshtml";
+}
+
+<h2 class="my-2">Yazılarım</h2>
+
+<table class="table table-bordered table-hover table-responsive-sm table-responsive-md my-3 ">
+    <tr>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Tarih</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        string metin = System.Text.RegularExpressions.Regex.Replace(x.YaziAciklama, @"<(.|\n)*?>", string.Empty);
+
+        <tr>
+            <td>@x.YaziBaslik</td>
+            <td>@metin.Substring(0, 70)</td>
+            <td>@x.YaziTarih.ToString().AsDateTime().ToString("dd/MM/yyyy")</td>
+            <td><a href="/UyeAdmin/UyeYaziSil/@x.YaziID" class="btn btn-outline-danger">Sil</a></td>
+            <td><a href="/UyeAdmin/UyeYaziGetir/@x.YaziID" class="btn btn-outline-success">Güncelle</a></td>
+        </tr>
+    }
+
+</table>
+

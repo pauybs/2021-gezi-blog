@@ -1,0 +1,45 @@
+﻿@model List<TezProje.Models.Siniflar.Basliklar>
+@{
+    ViewBag.Title = "UyeSonYazi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/package/dist/sweetalert2.min.css" rel="stylesheet" />
+<script src="~/Content/package/dist/sweetalert2.min.js"></script>
+<script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+
+
+@if (TempData["uyebaslik"] != null)
+{
+
+    <script>
+        Swal.fire({
+            title: 'Başarılı',
+            text: 'Başlık başarıyla güncellendi!',
+            icon: 'success',
+            confirmButtonText: 'Tamam'
+        })
+    </script>
+}
+
+<h2 class="my-2">Üyelerin Son Yazıları</h2>
+
+<div class="mb-3 text-center">
+    <div class="card">
+        @foreach (var x in Model)
+        {
+            <h5 class="card-header bg-secondary text-white">Ana Başlık ve Açıklama</h5>
+            <div class="card-body">
+                <h5 class="card-title">@x.AnaBaslik</h5>
+                <p class="card-text">@x.AnaAciklama</p>
+                <a href="/Admin/UyeBaslikGetir/@x.BaslikID/" class="btn btn-success">Güncelle</a>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="card shadow-lg">
+    @Html.Action("UyeSonYazi", "Default")
+</div>
+
+

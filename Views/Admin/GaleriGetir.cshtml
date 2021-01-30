@@ -1,0 +1,37 @@
+﻿@model TezProje.Models.Siniflar.Harita
+@{
+    ViewBag.Title = "GaleriGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Galeri Güncelle</h2>
+
+@using (Html.BeginForm("GaleriGuncelle", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="row">
+
+    @Html.HiddenFor(x => x.HaritaID);
+    <div class="col-6 col-md-6 col-lg-3">
+        <div class="row justify-content-center">
+            <img class=" img-fluid shadow-lg" src="@Html.DisplayFor(x=>x.Frame)" alt="Card image cap">
+        </div>
+    </div>
+
+    <div class="col-8 ml-2">
+        <div class="row">
+            @Html.TextBoxFor(x => x.Frame, htmlAttributes: new { @class = "form-control", @Type = "file", accept = "image/*" })
+        </div>
+        <div class="row mt-3">
+            <button type="submit" class="btn btn-block btn-success">Güncelle</button>
+        </div>
+    </div>
+
+   
+            
+     
+
+
+</div>
+}
+
+

@@ -1,0 +1,10 @@
+﻿@model List<TezProje.Models.Siniflar.Basliklar>
+
+
+<header class="text-center mb-5">
+    @foreach (var x in Model)
+    {
+        <h2>@x.AnaBaslik</h2>
+        <p>@x.AnaAciklama</p>
+    }
+</header>
